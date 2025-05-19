@@ -1,0 +1,740 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<!-- Meta Tags -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Title -->
+<title>Dashboard - JOEeXPRESS</title>
+
+<!-- Favicon -->
+<link rel="icon" href="images/JE Techhub logo - Copy.png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="css/nice-select.css">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- icofont CSS -->
+<link rel="stylesheet" href="css/icofont.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="css/owl-carousel.css">
+<!-- Datepicker CSS -->
+<link rel="stylesheet" href="css/datepicker.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="css/animate.min.css">
+<!-- Magnific Popup CSS -->
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<!-- Medipro CSS -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- Auth Service -->
+<script src="js/authService.js"></script>
+
+<style>
+    :root {
+        --primary-color: #1A76D1;
+        --secondary-color: #FF8C00;
+        --success-color: #28a745;
+        --danger-color: #dc3545;
+        --dark-color: #343a40;
+        --light-color: #f8f9fa;
+        --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        --card-border-radius: 0.75rem;
+        --transition-speed: 0.3s;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5f7fa;
+    }
+    
+    /* Dashboard styles */
+    .dashboard-container {
+        padding: 30px 20px;
+    }
+    
+    .welcome-card {
+        background: linear-gradient(135deg, var(--primary-color), #3a8ee6);
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .welcome-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(30deg);
+    }
+    
+    .profile-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+    }
+    
+    .profile-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .course-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+    }
+    
+    .course-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stats-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+        text-align: center;
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stats-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+    
+    .stats-value {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark-color);
+    }
+    
+    .stats-label {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+    
+    .card-title {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        position: relative;
+    }
+    
+    .card-title::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        width: 50px;
+        background: var(--primary-color);
+    }
+    
+    .progress-container {
+        position: relative;
+        margin-bottom: 25px;
+    }
+    
+    .progress-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    .progress-bar {
+        height: 12px;
+        border-radius: 6px;
+        margin-top: 10px;
+        background-color: #e9ecef;
+        overflow: hidden;
+    }
+    
+    .progress-bar-fill {
+        height: 100%;
+        border-radius: 6px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        position: relative;
+        animation: progressAnimation 1s ease-in-out;
+        transition: width 0.6s ease;
+    }
+    
+    @keyframes progressAnimation {
+        0% {
+            width: 0;
+        }
+    }
+    
+    .loader-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader {
+        width: 70px;
+        height: 70px;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .action-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color var(--transition-speed);
+        margin-top: 15px;
+    }
+    
+    .action-btn:hover {
+        background-color: #0d6efd;
+    }
+    
+    .upcoming-lessons {
+        margin-top: 15px;
+    }
+    
+    .lesson-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        border-left: 4px solid var(--primary-color);
+        border-radius: 4px;
+    }
+    
+    .lesson-item:hover {
+        background: #e9ecef;
+    }
+    
+    .lesson-title {
+        font-weight: 500;
+    }
+    
+    .lesson-date {
+        color: #6c757d;
+    }
+    
+    .badge {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        font-size: .75em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+    }
+    
+    .badge-primary {
+        background-color: var(--primary-color);
+    }
+    
+    .badge-success {
+        background-color: var(--success-color);
+    }
+    
+    .badge-danger {
+        background-color: var(--danger-color);
+    }
+    
+    /* Responsive adjustments */
+    @media only screen and (max-width: 767px) {
+        .dashboard-container {
+            padding: 20px 10px;
+        }
+        
+        .welcome-card, .profile-card, .course-card, .stats-card {
+            padding: 20px;
+        }
+        
+        .stats-value {
+            font-size: 1.5rem;
+        }
+        
+        .stats-card i {
+            font-size: 2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Header Area -->
+<header class="header">
+<div class="header-inner bg-dark text-white">
+<div class="container">
+<div class="inner">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-12">
+<!-- Start Logo -->
+<div class="logo">
+<a href="index.html"><img src="images/JE Techhub logo.png" alt="Logo"></a>
+</div>
+<!-- End Logo -->
+<!-- Mobile Nav -->
+<div class="mobile-nav"></div>
+<!-- End Mobile Nav -->
+</div>
+<div class="col-lg-7 col-md-9 col-12">
+<!-- Main Menu -->
+<div class="main-menu">
+<nav class="navigation">
+<ul class="nav menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#about">About Us</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+<!--/ End Main Menu -->
+</div>
+<div class="col-lg-2 col-12">
+<div class="get-quote">
+<a href="#" class="btn" id="logoutButton">Logout</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- End Header Area -->
+
+<!-- Loading Spinner -->
+<div class="loader-wrapper">
+    <div class="loader"></div>
+</div>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="bread-inner">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Student Dashboard</h2>
+                    <ul class="bread-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><i class="icofont-simple-right"></i></li>
+                        <li class="active">Dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Dashboard Content -->
+<section class="dashboard-container section">
+    <div class="container">
+        <div class="welcome-card">
+            <h2>Welcome, <span id="userFullName">Student</span>! <i class="fa fa-graduation-cap"></i></h2>
+            <p>Track your learning progress, view upcoming lessons, and manage your profile all in one place.</p>
+        </div>
+        
+        <div class="row">
+            <!-- Stats Row -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-book"></i>
+                    <div class="stats-value" id="completedModules">0</div>
+                    <div class="stats-label">Completed Modules</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-tasks"></i>
+                    <div class="stats-value" id="totalModules">0</div>
+                    <div class="stats-label">Total Modules</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-clock-o"></i>
+                    <div class="stats-value">120</div>
+                    <div class="stats-label">Learning Hours</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-certificate"></i>
+                    <div class="stats-value">1</div>
+                    <div class="stats-label">Certificate</div>
+                </div>
+            </div>
+            
+            <!-- Profile Info -->
+            <div class="col-lg-4 col-md-6">
+                <div class="profile-card">
+                    <h3 class="card-title">Profile Information</h3>
+                    <div id="profileInfo">
+                        <p><strong><i class="fa fa-user"></i> First Name:</strong> <span id="userFirstName"></span></p>
+                        <p><strong><i class="fa fa-user"></i> Last Name:</strong> <span id="userLastName"></span></p>
+                        <p><strong><i class="fa fa-envelope"></i> Email:</strong> <span id="userEmail"></span></p>
+                        <p><strong><i class="fa fa-graduation-cap"></i> Enrolled Course:</strong> <span id="userCourse"></span></p>
+                        <p><strong><i class="fa fa-calendar"></i> Registered On:</strong> <span id="userRegistrationDate"></span></p>
+                    </div>
+                    <button class="action-btn">Edit Profile</button>
+                </div>
+            </div>
+            
+            <!-- Course Progress -->
+            <div class="col-lg-8 col-md-6">
+                <div class="course-card">
+                    <h3 class="card-title">Course Progress</h3>
+                    <div id="courseProgress">
+                        <p>Loading course progress...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="course-card">
+                    <h3 class="card-title">Upcoming Lessons</h3>
+                    <div class="upcoming-lessons">
+                        <div class="lesson-item">
+                            <div class="lesson-title">Introduction to React</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-primary">Today</span> 10:00 AM
+                            </div>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-title">Advanced JavaScript Concepts</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-success">Tomorrow</span> 09:30 AM
+                            </div>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-title">Database Design Principles</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-danger">May 15</span> 11:00 AM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="course-card">
+                    <h3 class="card-title">Recent Announcements</h3>
+                    <div class="announcement">
+                        <h5>New Course Materials Available</h5>
+                        <p>We've added new resources for the Software Development track. Check them out in your learning portal.</p>
+                        <small class="text-muted">Posted 2 days ago</small>
+                    </div>
+                    <hr>
+                    <div class="announcement">
+                        <h5>Upcoming Workshop</h5>
+                        <p>Join us for a special workshop on UI/UX design principles this Friday at 2:00 PM.</p>
+                        <small class="text-muted">Posted 5 days ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Area -->
+<footer id="footer" class="footer">
+<!-- Footer Top -->
+<div class="footer-top">
+<div class="container">
+<div class="row">
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>About Us</h2>
+<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through hands-on training and innovative solutions.</p>
+<!-- Social -->
+<ul class="social">
+<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
+<li><a href="#"><i class="icofont-google-plus"></i></a></li>
+<li><a href="#"><i class="icofont-twitter"></i></a></li>
+</ul>
+<!-- End Social -->
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer f-link">
+<h2>Quick Links</h2>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-12">
+<ul>
+<li><a href="index.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+<li><a href="about.html"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+<li><a href="courses.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Courses</a></li>
+<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
+<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Our Services</h2>
+<ul>
+<li><a href="programs.html#webDev"><i class="fa fa-caret-right" aria-hidden="true"></i>Software Development</a></li>
+<li><a href="programs.html#dataAnalysis"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis</a></li>
+<li><a href="programs.html#UIUX"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design</a></li>
+<li><a href="programs.html#trading"><i class="fa fa-caret-right" aria-hidden="true"></i>Forex Trading</a></li>
+<li><a href="programs.html#vidGraphics"><i class="fa fa-caret-right" aria-hidden="true"></i>Graphics & Video</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Open Hours</h2>
+<ul class="time-sidual">
+<li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
+<li class="day">Saturdays <span>9.00-18.30</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--/ End Footer Top -->
+<!-- Copyright -->
+<div class="copyright">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-12">
+<div class="copyright-content">
+<p>© Copyright 2024 | All Rights Reserved by <a href="index.html">JE Tech Hub</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--/ End Copyright -->
+</footer>
+<!--/ End Footer Area -->
+
+<script>
+// Function to format dates in a more readable format
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+// Function to format course display name
+function formatCourseName(courseCode) {
+    switch(courseCode) {
+        case 'softwareDev': return 'Software Development';
+        case 'dataAnalysis': return 'Data Analysis';
+        case 'videoGraphics': return 'Video Editing & Graphics Design';
+        case 'forex': return 'Forex Trading';
+        case 'gadgets': return 'Gadgets/Sales and Repairs';
+        case 'member': return 'Member';
+        default: return courseCode;
+    }
+}
+
+// Handle logout
+document.getElementById('logoutButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    authService.logout();
+    window.location.href = 'index.html';
+});
+
+// Load user profile data
+async function loadUserProfile() {
+    try {
+        document.querySelector('.loader-wrapper').classList.remove('hidden');
+        
+        // Try to get profile from local storage first
+        let userProfile = authService.getUserProfile();
+        
+        // If token exists but no profile, fetch it from the server
+        if (authService.getToken() && !userProfile) {
+            userProfile = await authService.getProfile();
+        }
+        
+        // Redirect to login if no valid auth session
+        if (!userProfile) {
+            window.location.href = 'getStarted.html';
+            return;
+        }
+        
+        // Update profile information
+        document.getElementById('userFullName').textContent = userProfile.firstName + ' ' + userProfile.lastName;
+        document.getElementById('userFirstName').textContent = userProfile.firstName;
+        document.getElementById('userLastName').textContent = userProfile.lastName;
+        document.getElementById('userEmail').textContent = userProfile.email;
+        document.getElementById('userCourse').textContent = formatCourseName(userProfile.course);
+        document.getElementById('userRegistrationDate').textContent = formatDate(userProfile.registrationDate);
+        
+        // Update stats
+        let totalModulesCompleted = 0;
+        let totalModulesCount = 0;
+
+        // Update course progress
+        const progressContainer = document.getElementById('courseProgress');
+        
+        if (userProfile.progress && userProfile.progress.length > 0) {
+            let progressHTML = '';
+            
+            userProfile.progress.forEach(progress => {
+                const percentComplete = (progress.completed / progress.totalModules) * 100;
+                totalModulesCompleted += progress.completed;
+                totalModulesCount += progress.totalModules;
+                
+                progressHTML += `
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>${formatCourseName(progress.course)}</span>
+                            <span>${progress.completed} of ${progress.totalModules} modules</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: ${percentComplete}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            progressContainer.innerHTML = progressHTML;
+            
+            // Update stats cards
+            document.getElementById('completedModules').textContent = totalModulesCompleted;
+            document.getElementById('totalModules').textContent = totalModulesCount;
+        } else {
+            progressContainer.innerHTML = '<p>No course progress available.</p>';
+        }
+    } catch (error) {
+        console.error('Error loading profile:', error);
+        if (error.message.includes('token') || error.message.includes('login')) {
+            // Redirect to login page if authentication issue
+            window.location.href = 'getStarted.html';
+        }
+    } finally {
+        document.querySelector('.loader-wrapper').classList.add('hidden');
+    }
+}
+
+// Check authentication on page load
+window.addEventListener('load', function() {
+    if (!authService.isAuthenticated()) {
+        window.location.href = 'getStarted.html';
+        return;
+    }
+    
+    loadUserProfile();
+});
+</script>
+
+<!-- jquery Min JS -->
+<script src="js/jquery.min.js"></script>
+<!-- jquery Migrate JS -->
+<script src="js/jquery-migrate-3.0.0.js"></script>
+<!-- jquery Ui JS -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Easing JS -->
+<script src="js/easing.js"></script>
+<!-- Color JS -->
+<script src="js/colors.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- Jquery Nav JS -->
+<script src="js/jquery.nav.js"></script>
+<!-- Slicknav JS -->
+<script src="js/slicknav.min.js"></script>
+<!-- ScrollUp JS -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- Niceselect JS -->
+<script src="js/niceselect.js"></script>
+<!-- Tilt Jquery JS -->
+<script src="js/tilt.jquery.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="js/owl-carousel.js"></script>
+<!-- counterup JS -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Steller JS -->
+<script src="js/steller.js"></script>
+<!-- Wow JS -->
+<script src="js/wow.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Counter Up CDN JS -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+</body>
+</html>

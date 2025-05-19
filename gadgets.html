@@ -1,0 +1,974 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tech Gadgets Marketplace - JE TechHub</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/JE Techhub logo - Copy.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Slideshow CSS -->
+    <link rel="stylesheet" href="css/slideshow.css">
+    <!-- Gadgets CSS -->
+    <link rel="stylesheet" href="css/gadgets.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Area -->
+    <header class="header">
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-12">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="index.html"><img src="images/JE Techhub logo.png" alt="JE TechHub logo"></a>
+                            </div>
+                            <!-- End Logo -->
+                            <!-- Mobile Nav -->
+                            <div class="mobile-nav"></div>
+                            <!-- End Mobile Nav -->
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="courses.html">Courses</a></li>
+                                        <li><a href="programs.html">Programs</a></li>
+                                        <li class="active"><a href="gadgets.html">Gadgets</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                      
+                                        
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- End Main Menu -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Hero Section -->
+    <section class="hero-slider">
+        <!-- Single Slider -->
+        <div class="single-slider" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=60');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 col-12">
+                        <div class="hero-text">
+                            <h1>Explore Our Tech Gadgets Marketplace</h1>
+                            <p>Discover cutting-edge technology, trade your devices, or find great deals on quality electronics</p>
+                            <div class="button">
+                                <a href="#gadgetsSection" class="btn primary">Browse Gadgets</a>
+                                <a href="#" data-toggle="modal" data-target="#signupModal" class="btn secondary">Join Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+    </section>
+    <!--/ End Hero Section -->
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <h2>Tech Gadgets Marketplace</h2>
+                        <ul class="bread-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="gadgets.html">Gadgets</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Gadgets Section -->
+    <section class="section" id="gadgetsSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Browse Tech Gadgets</h2>
+                        <p>Explore our selection of high-quality tech gadgets available for purchase or swap</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Options -->
+            <div class="row mb-4 filter-container">
+                <div class="col-lg-4 col-md-4 col-12 mb-2">
+                    <select id="categoryFilter" class="form-control">
+                        <option value="all">All Categories</option>
+                        <option value="phone">Smartphones</option>
+                        <option value="laptop">Laptops</option>
+                        <option value="tablet">Tablets</option>
+                        <option value="accessory">Accessories</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12 mb-2">
+                    <select id="priceFilter" class="form-control">
+                        <option value="all">All Price Ranges</option>
+                        <option value="0-100">$0 - $100</option>
+                        <option value="100-500">$100 - $500</option>
+                        <option value="500-1000">$500 - $1000</option>
+                        <option value="1000+">$1000+</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12 mb-2">
+                    <select id="sortFilter" class="form-control">
+                        <option value="default">Sort By: Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Gadgets Grid -->
+            <div class="row justify-content-center" id="gadgetsContainer">
+                <!-- Gadget Item 1 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="499" data-name="Premium Smartphone X1">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/smartphone1.jpg" alt="Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/smartphone2.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/smartphone3.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60';">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Premium Smartphone X1</h4>
+                            <div class="gadget-category">Category: <span>Smartphone</span></div>
+                            <div class="gadget-price">Price: <span>$499</span></div>
+                            <p class="card-description">The latest model with stunning camera features, 128GB storage, and all-day battery life. Perfect for professionals and photography enthusiasts.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(1)">Contact Seller</button>
+                                <button class="card-button buy-button" onclick="openBuyModal(1, 'Premium Smartphone X1', 499)">Buy Now</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(1)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 2 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="laptop" data-price="1299" data-name="Developer Pro Laptop">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/laptop1.jpg" alt="Laptop" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/laptop2.jpg" alt="Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/laptop3.jpg" alt="Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60';">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Developer Pro Laptop</h4>
+                            <div class="gadget-category">Category: <span>Laptop</span></div>
+                            <div class="gadget-price">Price: <span>$1,299</span></div>
+                            <p class="card-description">High-performance laptop with 16GB RAM, 512GB SSD, and dedicated graphics card. Ideal for programming, design, and gaming.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(2)">Contact Seller</button>
+                                <button class="card-button buy-button" onclick="openBuyModal(2, 'Developer Pro Laptop', 1299)">Buy Now</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(2)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 3 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="tablet" data-price="349" data-name="Ultra-Slim Tablet">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/tablet1.jpg" alt="Tablet" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/tablet2.jpg" alt="Tablet" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=800&auto=format&fit=crop&q=60';">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Ultra-Slim Tablet</h4>
+                            <div class="gadget-category">Category: <span>Tablet</span></div>
+                            <div class="gadget-price">Price: <span>$349</span></div>
+                            <p class="card-description">10-inch display, perfect for reading, browsing, and entertainment. Includes stylus and protective case.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(3)">Contact Seller</button>
+                                <button class="card-button buy-button" onclick="openBuyModal(3, 'Ultra-Slim Tablet', 349)">Buy Now</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(3)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 4 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="accessory" data-price="89" data-name="Premium Wireless Headphones">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/headphones1.jpg" alt="Headphones" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/headphones2.jpg" alt="Headphones" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&auto=format&fit=crop&q=60';">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Premium Wireless Headphones</h4>
+                            <div class="gadget-category">Category: <span>Accessory</span></div>
+                            <div class="gadget-price">Price: <span>$89</span></div>
+                            <p class="card-description">Noise-cancelling headphones with premium sound quality, Bluetooth 5.0, and 30-hour battery life.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(4)">Contact Seller</button>
+                                <button class="card-button buy-button" onclick="openBuyModal(4, 'Premium Wireless Headphones', 89)">Buy Now</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(4)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 5 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="299" data-name="Budget-Friendly Smartphone">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/smartphone4.jpg" alt="Budget Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533228100845-08145b01de14?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/smartphone5.jpg" alt="Budget Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1550367083-9fa5411cb8a0?w=800&auto=format&fit=crop&q=60';">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Budget-Friendly Smartphone</h4>
+                            <div class="gadget-category">Category: <span>Smartphone</span></div>
+                            <div class="gadget-price">Price: <span>$299</span></div>
+                            <p class="card-description">Great entry-level smartphone with excellent battery life, 64GB storage, and dual-camera system.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(5)">Contact Seller</button>
+                                <button class="card-button buy-button" onclick="openBuyModal(5, 'Budget-Friendly Smartphone', 299)">Buy Now</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(5)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 6 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="laptop" data-price="599" data-name="Student Laptop">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/laptop4.jpg" alt="Budget Laptop" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/laptop5.jpg" alt="Budget Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&auto=format&fit=crop&q=60';">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Student Laptop</h4>
+                            <div class="gadget-category">Category: <span>Laptop</span></div>
+                            <div class="gadget-price">Price: <span>$599</span></div>
+                            <p class="card-description">Perfect for students and everyday tasks. Features 8GB RAM, 256GB SSD, and lightweight design.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(6)">Contact Seller</button>
+                                <button class="card-button buy-button" onclick="openBuyModal(6, 'Student Laptop', 599)">Buy Now</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(6)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Gadgets Section -->
+    
+    <!-- Swap Modal -->
+    <div class="modal fade" id="swapModal" tabindex="-1" role="dialog" aria-labelledby="swapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="swapModalLabel">Apply for Swap</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="swapForm">
+                        <input type="hidden" id="gadgetId" name="gadgetId">
+                        <div class="form-group">
+                            <label for="swapName">Your Name</label>
+                            <input type="text" class="form-control" id="swapName" name="swapName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapEmail">Email Address</label>
+                            <input type="email" class="form-control" id="swapEmail" name="swapEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapPhone">Phone Number</label>
+                            <input type="text" class="form-control" id="swapPhone" name="swapPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemName">Your Item Name</label>
+                            <input type="text" class="form-control" id="swapItemName" name="swapItemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemValue">Estimated Value ($)</label>
+                            <input type="number" class="form-control" id="swapItemValue" name="swapItemValue" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemImage">Upload Item Image</label>
+                            <input type="file" class="form-control-file" id="swapItemImage" name="swapItemImage">
+                            <small class="form-text text-muted">Upload a clear image of your item (optional)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemDescription">Item Description</label>
+                            <textarea class="form-control" id="swapItemDescription" name="swapItemDescription" rows="3" required></textarea>
+                        </div>
+                    </form>
+                    <div id="swapSuccess" class="alert alert-success mt-3" style="display: none;">
+                        Your swap application has been submitted successfully! We'll contact you soon.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitSwapForm">Submit Application</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Buy Now Modal -->
+    <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buyModalLabel">Complete Your Purchase</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="checkout-details">
+                        <h5>Product: <span id="buyProductName"></span></h5>
+                        <h6>Price: $<span id="buyProductPrice"></span></h6>
+                    </div>
+                    <hr>
+                    <form id="buyForm">
+                        <input type="hidden" id="buyGadgetId" name="buyGadgetId">
+                        <div class="form-group">
+                            <label for="buyName">Full Name</label>
+                            <input type="text" class="form-control" id="buyName" name="buyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="buyPhone">Phone Number</label>
+                            <input type="text" class="form-control" id="buyPhone" name="buyPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="buyEmail">Email Address</label>
+                            <input type="email" class="form-control" id="buyEmail" name="buyEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="buyAddress">Delivery Address</label>
+                            <textarea class="form-control" id="buyAddress" name="buyAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="buyPaymentMethod">Payment Method</label>
+                            <select class="form-control" id="buyPaymentMethod" name="buyPaymentMethod" required>
+                                <option value="">Select Payment Method</option>
+                                <option value="credit">Credit Card</option>
+                                <option value="debit">Debit Card</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="cod">Cash on Delivery</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div id="buySuccess" class="alert alert-success mt-3" style="display: none;">
+                        Your order has been placed successfully! We'll process your purchase and contact you shortly.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitBuyForm">Complete Purchase</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" class="form-control" id="loginEmail" name="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" name="loginPassword" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <div class="text-right">
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                    </form>
+                    <div id="loginError" class="alert alert-danger mt-3" style="display: none;">
+                        Invalid email or password. Please try again.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitLoginForm">Login</button>
+                </div>
+                <div class="modal-footer-alt">
+                    <p>Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupFirstName">First Name</label>
+                            <input type="text" class="form-control" id="signupFirstName" name="signupFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupLastName">Last Name</label>
+                            <input type="text" class="form-control" id="signupLastName" name="signupLastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address</label>
+                            <input type="email" class="form-control" id="signupEmail" name="signupEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" name="signupPassword" required>
+                            <small class="form-text text-muted">Password must be at least 8 characters long.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupConfirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="signupConfirmPassword" name="signupConfirmPassword" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="termsAgree" required>
+                            <label class="form-check-label" for="termsAgree">I agree to the <a href="#">Terms and Conditions</a></label>
+                        </div>
+                    </form>
+                    <div id="signupError" class="alert alert-danger mt-3" style="display: none;"></div>
+                    <div id="signupSuccess" class="alert alert-success mt-3" style="display: none;">
+                        Your account has been created successfully! You can now login.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitSignupForm">Sign Up</button>
+                </div>
+                <div class="modal-footer-alt">
+                    <p>Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Area -->
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer">
+                            <h2>About Us</h2>
+                            <p>JE TechHub provides quality tech education and resources.</p>
+                            <!-- Social -->
+                            <ul class="social">
+                                <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+                            </ul>
+                            <!-- End Social -->
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer f-link">
+                            <h2>Quick Links</h2>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="courses.html">Courses</a></li>
+                                <li><a href="programs.html">Programs</a></li>
+                                <li><a href="gadgets.html">Gadgets</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer">
+                            <h2>Open Hours</h2>
+                            <p>Visit us during our business hours.</p>
+                            <ul class="time-sidual">
+                                <li class="day">Monday - Friday <span>8.00-20.00</span></li>
+                                <li class="day">Saturday <span>9.00-18.30</span></li>
+                                <li class="day">Sunday <span>9.00-15.00</span></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer">
+                            <h2>Newsletter</h2>
+                            <p>Subscribe to our newsletter for updates.</p>
+                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                <input name="email" placeholder="Email Address" class="common-input" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'" required="" type="email">
+                                <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+                            </form>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright-content">
+                            <p>© Copyright 2025 | All Rights Reserved | JE TechHub</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!-- End Footer Area -->
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Jquery Slicknav -->
+    <script src="js/jquery.slicknav.min.js"></script>
+    <!-- Jquery Steller -->
+    <script src="js/steller.js"></script>
+    <!-- Jquery Easing -->
+    <script src="js/easing.js"></script>
+    <!-- Jquery ScrollUp -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Colors -->
+    <script src="js/colors.js"></script>
+    <!-- Slideshow JS -->
+    <script src="js/slideshow.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+    
+    <!-- Gadgets JS -->
+    <script>
+        // Handle the loading spinner
+        window.addEventListener('load', function() {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            if (loaderWrapper) {
+                loaderWrapper.classList.add('hidden');
+                setTimeout(() => {
+                    loaderWrapper.style.display = 'none';
+                }, 500);
+            }
+        });
+        
+        // Filter and sort functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const priceFilter = document.getElementById('priceFilter');
+            const sortFilter = document.getElementById('sortFilter');
+            const gadgetItems = document.querySelectorAll('.gadget-item');
+            
+            function filterAndSortGadgets() {
+                const selectedCategory = categoryFilter.value;
+                const selectedPrice = priceFilter.value;
+                const selectedSort = sortFilter.value;
+                
+                // Create array from gadget items for sorting
+                const gadgetsArray = Array.from(gadgetItems);
+                
+                // Sort items if needed
+                if (selectedSort !== 'default') {
+                    gadgetsArray.sort((a, b) => {
+                        if (selectedSort === 'price-asc') {
+                            return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+                        } else if (selectedSort === 'price-desc') {
+                            return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+                        } else if (selectedSort === 'name-asc') {
+                            return a.dataset.name.localeCompare(b.dataset.name);
+                        }
+                        return 0;
+                    });
+                    
+                    // Reorder elements in the DOM
+                    const container = document.getElementById('gadgetsContainer');
+                    gadgetsArray.forEach(item => {
+                        container.appendChild(item);
+                    });
+                }
+                
+                // Apply filters
+                gadgetItems.forEach(item => {
+                    const category = item.dataset.category;
+                    const price = parseInt(item.dataset.price);
+                    
+                    let showByCategory = selectedCategory === 'all' || category === selectedCategory;
+                    let showByPrice = true;
+                    
+                    if (selectedPrice !== 'all') {
+                        if (selectedPrice === '0-100' && (price < 0 || price > 100)) showByPrice = false;
+                        if (selectedPrice === '100-500' && (price < 100 || price > 500)) showByPrice = false;
+                        if (selectedPrice === '500-1000' && (price < 500 || price > 1000)) showByPrice = false;
+                        if (selectedPrice === '1000+' && price < 1000) showByPrice = false;
+                    }
+                    
+                    if (showByCategory && showByPrice) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Event listeners
+            if (categoryFilter) categoryFilter.addEventListener('change', filterAndSortGadgets);
+            if (priceFilter) priceFilter.addEventListener('change', filterAndSortGadgets);
+            if (sortFilter) sortFilter.addEventListener('change', filterAndSortGadgets);
+            
+            // Contact seller function
+            window.contactSeller = function(gadgetId) {
+                alert(`Contact request sent for gadget #${gadgetId}. The seller will reach out to you soon.`);
+            };
+            
+            // Open swap modal
+            window.openSwapModal = function(gadgetId) {
+                const modal = $('#swapModal');
+                document.getElementById('gadgetId').value = gadgetId;
+                document.getElementById('swapSuccess').style.display = 'none';
+                document.getElementById('swapForm').reset();
+                modal.modal('show');
+            };
+            
+            // Open buy modal
+            window.openBuyModal = function(gadgetId, productName, productPrice) {
+                const modal = $('#buyModal');
+                document.getElementById('buyGadgetId').value = gadgetId;
+                document.getElementById('buyProductName').textContent = productName;
+                document.getElementById('buyProductPrice').textContent = productPrice;
+                document.getElementById('buySuccess').style.display = 'none';
+                document.getElementById('buyForm').reset();
+                modal.modal('show');
+            };
+            
+            // Submit swap form
+            document.getElementById('submitSwapForm').addEventListener('click', function() {
+                const form = document.getElementById('swapForm');
+                if (form.checkValidity()) {
+                    document.getElementById('swapSuccess').style.display = 'block';
+                    setTimeout(() => {
+                        $('#swapModal').modal('hide');
+                    }, 3000);
+                } else {
+                    form.reportValidity();
+                }
+            });
+            
+            // Submit buy form
+            document.getElementById('submitBuyForm').addEventListener('click', function() {
+                const form = document.getElementById('buyForm');
+                if (form.checkValidity()) {
+                    document.getElementById('buySuccess').style.display = 'block';
+                    setTimeout(() => {
+                        $('#buyModal').modal('hide');
+                    }, 3000);
+                } else {
+                    form.reportValidity();
+                }
+            });
+
+            // Login form submission
+            document.getElementById('submitLoginForm').addEventListener('click', function() {
+                const form = document.getElementById('loginForm');
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                if (form.checkValidity()) {
+                    // Make API call to the authentication server
+                    fetch('http://localhost:5000/api/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email, password })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.token) {
+                            // Store token and user data
+                            localStorage.setItem('authToken', data.token);
+                            localStorage.setItem('user', JSON.stringify(data.user));
+                            
+                            // Close modal
+                            $('#loginModal').modal('hide');
+                            
+                            // Update UI to show logged in state
+                            updateAuthUI(true);
+                            
+                            // Reload page
+                            window.location.reload();
+                        } else {
+                            document.getElementById('loginError').style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Login error:', error);
+                        document.getElementById('loginError').textContent = 'An error occurred. Please try again.';
+                        document.getElementById('loginError').style.display = 'block';
+                    });
+                } else {
+                    form.reportValidity();
+                }
+            });
+
+            // Signup form submission
+            document.getElementById('submitSignupForm').addEventListener('click', function() {
+                const form = document.getElementById('signupForm');
+                const firstName = document.getElementById('signupFirstName').value;
+                const lastName = document.getElementById('signupLastName').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                
+                // Reset error messages
+                document.getElementById('signupError').style.display = 'none';
+                
+                if (form.checkValidity()) {
+                    // Validate password match
+                    if (password !== confirmPassword) {
+                        document.getElementById('signupError').textContent = 'Passwords do not match';
+                        document.getElementById('signupError').style.display = 'block';
+                        return;
+                    }
+                    
+                    // Make API call to the authentication server
+                    fetch('http://localhost:5000/api/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ 
+                            firstName, 
+                            lastName, 
+                            email, 
+                            password,
+                            course: 'Software Development' // Default course
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.token) {
+                            // Show success message
+                            document.getElementById('signupSuccess').style.display = 'block';
+                            
+                            // Store token and user data
+                            localStorage.setItem('authToken', data.token);
+                            localStorage.setItem('user', JSON.stringify(data.user));
+                            
+                            // Wait a moment and then close modal and open login
+                            setTimeout(() => {
+                                $('#signupModal').modal('hide');
+                                
+                                // Update UI to show logged in state
+                                updateAuthUI(true);
+                                
+                                // Reload page
+                                window.location.reload();
+                            }, 2000);
+                        } else if (data.message) {
+                            document.getElementById('signupError').textContent = data.message;
+                            document.getElementById('signupError').style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Signup error:', error);
+                        document.getElementById('signupError').textContent = 'An error occurred. Please try again.';
+                        document.getElementById('signupError').style.display = 'block';
+                    });
+                } else {
+                    form.reportValidity();
+                }
+            });
+
+            // Check if user is already logged in on page load
+            function checkAuthStatus() {
+                const token = localStorage.getItem('authToken');
+                if (token) {
+                    // Validate the token with the server
+                    fetch('http://localhost:5000/api/profile', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            updateAuthUI(true);
+                        } else {
+                            // Token is invalid, remove it
+                            localStorage.removeItem('authToken');
+                            localStorage.removeItem('user');
+                            updateAuthUI(false);
+                        }
+                    })
+                    .catch(() => {
+                        // Error checking token, assume logged out
+                        updateAuthUI(false);
+                    });
+                } else {
+                    updateAuthUI(false);
+                }
+            }
+
+            // Update UI based on authentication status
+            function updateAuthUI(isLoggedIn) {
+                const navMenu = document.querySelector('.nav.menu');
+                if (!navMenu) return;
+                
+                // Remove existing login/logout links
+                const loginItem = navMenu.querySelector('li a[data-target="#loginModal"]');
+                const signupItem = navMenu.querySelector('li a[data-target="#signupModal"]');
+                const logoutItem = navMenu.querySelector('li a#logoutBtn');
+                const profileItem = navMenu.querySelector('li a[href="dashboard.html"]');
+                
+                if (loginItem) loginItem.parentElement.remove();
+                if (signupItem) signupItem.parentElement.remove();
+                if (logoutItem) logoutItem.parentElement.remove();
+                if (profileItem) profileItem.parentElement.remove();
+                
+                if (isLoggedIn) {
+                    // Add profile and logout links
+                    const user = JSON.parse(localStorage.getItem('user') || '{}');
+                    
+                    const profileLi = document.createElement('li');
+                    const profileLink = document.createElement('a');
+                    profileLink.href = 'dashboard.html';
+                    profileLink.textContent = `My Profile`;
+                    profileLi.appendChild(profileLink);
+                    navMenu.appendChild(profileLi);
+                    
+                    const logoutLi = document.createElement('li');
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.textContent = 'Logout';
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('authToken');
+                        localStorage.removeItem('user');
+                        updateAuthUI(false);
+                        window.location.reload();
+                    });
+                    logoutLi.appendChild(logoutLink);
+                    navMenu.appendChild(logoutLi);
+                } else {
+                    // Add login and signup links
+                    const loginLi = document.createElement('li');
+                    const loginLink = document.createElement('a');
+                    loginLink.href = '#';
+                    loginLink.setAttribute('data-toggle', 'modal');
+                    loginLink.setAttribute('data-target', '#loginModal');
+                    loginLink.textContent = 'Login';
+                    loginLi.appendChild(loginLink);
+                    navMenu.appendChild(loginLi);
+                    
+                    const signupLi = document.createElement('li');
+                    const signupLink = document.createElement('a');
+                    signupLink.href = '#';
+                    signupLink.setAttribute('data-toggle', 'modal');
+                    signupLink.setAttribute('data-target', '#signupModal');
+                    signupLink.textContent = 'Sign Up';
+                    signupLi.appendChild(signupLink);
+                    navMenu.appendChild(signupLi);
+                }
+            }
+            
+            // Check auth status on page load
+            checkAuthStatus();
+            
+            // Check all images and replace broken ones with placeholders
+            document.querySelectorAll('.card-slideshow img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
