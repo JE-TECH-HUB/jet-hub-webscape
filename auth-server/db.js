@@ -4,10 +4,10 @@ require('dotenv').config();
 
 // MySQL connection pool
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'fresh_user',
-  password: process.env.DB_PASSWORD || 'my_secure_password',
-  database: process.env.DB_NAME || 'fresh_web_craft_db',
+	host: 'localhost',
+	user: 'jetech_user',
+	password: 'securepass123',
+	database: 'jetech_auth',     
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
