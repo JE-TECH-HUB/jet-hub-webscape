@@ -1,23 +1,29 @@
 
-import React from 'react'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
+import BlogPage from './pages/BlogPage';
+import NotFound from './pages/NotFound';
+import './App.css';
 
 function App() {
   return (
-    <div className="app">
-      <h1>JE TechHub React Application</h1>
-      <p>This React app will serve as the admin dashboard for JE TechHub.</p>
-      <p>To access the main website, please navigate to the HTML pages.</p>
-      <div className="links">
-        <a href="/" className="link">Home</a>
-        <a href="/about.html" className="link">About</a>
-        <a href="/programs.html" className="link">Programs</a>
-        <a href="/contact.html" className="link">Contact</a>
-        <a href="/getStarted.html" className="link">Get Started</a>
-        <a href="/dashboard.html" className="link">Dashboard</a>
-      </div>
-    </div>
-  )
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
 }
 
-export default App
+export default App;
