@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="flex h-20 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <span className="text-2xl font-bold tracking-tight text-brand-blue-dark">
-              JE <span className="text-brand-orange">Tech</span> Hub
+               <span className="text-brand-orange">JE Tech Hub</span>
             </span>
           </Link>
 
