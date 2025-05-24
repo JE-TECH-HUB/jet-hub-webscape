@@ -37,7 +37,7 @@
 <style>
 .hero-section {
   height: 500px;
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000');
+  background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2126');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -52,7 +52,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(30, 58, 138, 0.8);
 }
 
 .hero-content {
@@ -68,12 +68,101 @@
   font-weight: 700;
   color: white;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-content p {
   font-size: 18px;
   max-width: 600px;
   margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.program-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.program-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.program-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.program-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.program-card:hover .program-image img {
+  transform: scale(1.05);
+}
+
+.program-content {
+  padding: 2rem;
+}
+
+.program-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.program-description {
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.program-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.program-features li {
+  padding: 0.5rem 0;
+  color: #4a5568;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.program-features li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #1e3a8a;
+  font-weight: bold;
+}
+
+.btn-program {
+  background: #1e3a8a;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-program:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-decoration: none;
 }
 
 @media (max-width: 767px) {
@@ -114,8 +203,7 @@
 <li><a href="index.html">Home</a></li>
 <li><a href="index.html#about">About Us</a></li>
 <li class="active"><a href="programs.html">Programs</a></li>
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="admin.html">Admin</a></li>
+<li><a href="gadgets.html">Gadgets</a></li>
 <li><a href="contact.html">Contact Us</a></li>
 </ul>
 </nav>
@@ -130,8 +218,8 @@
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
-    <h2>Our Training Programs</h2>
-    <p>Discover cutting-edge technology courses designed to transform your career and unlock your potential in the digital world.</p>
+    <h2>Transform Your Future with Tech</h2>
+    <p>Discover cutting-edge technology courses designed to transform your career and unlock your potential in the digital world. Learn from industry experts and gain hands-on experience.</p>
   </div>
 </section>
 
@@ -142,43 +230,143 @@
       <div class="col-12">
         <div class="section-title">
           <h2>Available Programs</h2>
-          <p>Choose from our comprehensive range of technology training programs</p>
+          <p>Choose from our comprehensive range of technology training programs designed for career success</p>
         </div>
       </div>
     </div>
     
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12">
-        <div class="card">
-          <img src="images/soft.jpg" alt="Software Development" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">Software Development</h3>
-            <p class="card-description">Learn modern web development technologies including HTML, CSS, JavaScript, and popular frameworks.</p>
-            <button class="card-button">Learn More</button>
+        <div class="program-card">
+          <div class="program-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2000" alt="Software Development">
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Software Development</h3>
+            <p class="program-description">Master modern web development technologies and build dynamic applications that solve real-world problems.</p>
+            <ul class="program-features">
+              <li>HTML, CSS, JavaScript fundamentals</li>
+              <li>React.js and Node.js development</li>
+              <li>Database design and management</li>
+              <li>Portfolio project development</li>
+              <li>Industry-standard tools and practices</li>
+            </ul>
+            <a href="contact.html" class="btn-program">Enroll Now</a>
           </div>
         </div>
       </div>
       
       <div class="col-lg-4 col-md-6 col-12">
-        <div class="card">
-          <img src="images/analysis.jpg" alt="Data Analysis" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">Data Analysis</h3>
-            <p class="card-description">Master data analysis tools like Excel, Python, SQL, and Power BI to make data-driven decisions.</p>
-            <button class="card-button">Learn More</button>
+        <div class="program-card">
+          <div class="program-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000" alt="Data Analysis">
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Data Analysis</h3>
+            <p class="program-description">Transform raw data into actionable insights using powerful analytics tools and statistical methods.</p>
+            <ul class="program-features">
+              <li>Excel and Google Sheets mastery</li>
+              <li>Python for data analysis</li>
+              <li>SQL database querying</li>
+              <li>Power BI and Tableau visualization</li>
+              <li>Statistical analysis techniques</li>
+            </ul>
+            <a href="contact.html" class="btn-program">Enroll Now</a>
           </div>
         </div>
       </div>
       
       <div class="col-lg-4 col-md-6 col-12">
-        <div class="card">
-          <img src="images/Uiux.jpg" alt="UI/UX Design" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">UI/UX Design</h3>
-            <p class="card-description">Create beautiful and user-friendly interfaces using Figma, Adobe XD, and design principles.</p>
-            <button class="card-button">Learn More</button>
+        <div class="program-card">
+          <div class="program-image">
+            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2000" alt="UI/UX Design">
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">UI/UX Design</h3>
+            <p class="program-description">Create beautiful, user-centered digital experiences that delight users and drive business success.</p>
+            <ul class="program-features">
+              <li>Design thinking principles</li>
+              <li>Figma and Adobe XD proficiency</li>
+              <li>User research and testing</li>
+              <li>Wireframing and prototyping</li>
+              <li>Mobile and web design best practices</li>
+            </ul>
+            <a href="contact.html" class="btn-program">Enroll Now</a>
           </div>
         </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="program-card">
+          <div class="program-image">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000" alt="Cybersecurity">
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Cybersecurity</h3>
+            <p class="program-description">Protect digital assets and learn ethical hacking techniques to secure modern technology infrastructure.</p>
+            <ul class="program-features">
+              <li>Network security fundamentals</li>
+              <li>Ethical hacking techniques</li>
+              <li>Risk assessment and management</li>
+              <li>Security tools and frameworks</li>
+              <li>Incident response procedures</li>
+            </ul>
+            <a href="contact.html" class="btn-program">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="program-card">
+          <div class="program-image">
+            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2000" alt="Digital Marketing">
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Digital Marketing</h3>
+            <p class="program-description">Master online marketing strategies to grow businesses and reach target audiences effectively.</p>
+            <ul class="program-features">
+              <li>Social media marketing</li>
+              <li>Google Ads and SEO optimization</li>
+              <li>Content marketing strategies</li>
+              <li>Analytics and performance tracking</li>
+              <li>Email marketing automation</li>
+            </ul>
+            <a href="contact.html" class="btn-program">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="program-card">
+          <div class="program-image">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2000" alt="Mobile App Development">
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Mobile App Development</h3>
+            <p class="program-description">Build native and cross-platform mobile applications for iOS and Android devices.</p>
+            <ul class="program-features">
+              <li>React Native development</li>
+              <li>iOS and Android fundamentals</li>
+              <li>App store deployment</li>
+              <li>Mobile UI/UX design</li>
+              <li>App monetization strategies</li>
+            </ul>
+            <a href="contact.html" class="btn-program">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <h3 style="color: #2d3748; margin-bottom: 1rem;">Ready to Start Your Tech Journey?</h3>
+        <p style="color: #718096; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Join thousands of students who have transformed their careers through our comprehensive training programs. 
+          Get personalized guidance from industry experts and hands-on experience with real projects.
+        </p>
+        <a href="contact.html" class="btn-program" style="margin-right: 1rem;">Contact Us</a>
+        <a href="gadgets.html" class="btn-program" style="background: #3b82f6;">View Gadgets</a>
       </div>
     </div>
   </div>
@@ -192,11 +380,52 @@
 <div class="col-lg-3 col-md-6 col-12">
 <div class="single-footer">
 <h2>About Us</h2>
-<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills.</p>
+<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through comprehensive training programs and expert guidance.</p>
 <ul class="social">
 <li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
 <li><a href="#"><i class="icofont-google-plus"></i></a></li>
 <li><a href="#"><i class="icofont-twitter"></i></a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer f-link">
+<h2>Quick Links</h2>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-12">
+<ul>
+<li><a href="index.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+<li><a href="index.html#about"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
+</ul>
+</div>
+<div class="col-lg-6 col-md-6 col-12">
+<ul>
+<li><a href="gadgets.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Gadgets</a></li>
+<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Our Programs</h2>
+<ul>
+<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Software Development</a></li>
+<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis</a></li>
+<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design</a></li>
+<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Cybersecurity</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Contact Info</h2>
+<ul>
+<li><i class="icofont-ui-call"></i> +234 123 456 7890</li>
+<li><i class="icofont-email"></i> info@jetechhub.com</li>
+<li><i class="icofont-location-pin"></i> Gwagwalada, Abuja, Nigeria</li>
 </ul>
 </div>
 </div>
