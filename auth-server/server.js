@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 
 const express = require('express');
@@ -22,81 +23,50 @@ setupDatabase().catch(console.error);
 app.use(cors());
 app.use(bodyParser.json());
 
-// In-memory databases as fallback
+// In-memory user database as fallback
 const users = [
   {
     id: 1,
     firstName: 'Demo',
     lastName: 'User',
     email: 'demo@example.com',
+    // Password: "demo123"
     password: '$2a$10$XFE3UJp8aVsJvnEcKRPImO3ZHuZ8nTnxReCZr1UBJcR6MoN1akNvG',
     course: 'Software Development',
     registrationDate: '2024-05-01T10:30:00Z',
     lastLogin: '2024-05-03T08:45:00Z',
-    role: 'user'
-  },
-  {
-    id: 2,
-    firstName: 'Admin',
-    lastName: 'User',
-    email: 'admin@jetechhub.com',
-    password: '$2a$10$XFE3UJp8aVsJvnEcKRPImO3ZHuZ8nTnxReCZr1UBJcR6MoN1akNvG',
-    course: 'Administration',
-    registrationDate: '2024-05-01T10:30:00Z',
-    lastLogin: '2024-05-03T08:45:00Z',
-    role: 'admin'
+    progress: [
+      {
+        course: 'Software Development',
+        completed: 3,
+        totalModules: 12
+      }
+    ],
+    profileImage: null
   }
 ];
-
-const deliveries = [];
-const gadgets = [
-  {
-    id: '1',
-    name: 'iPhone 13 Pro',
-    category: 'phones',
-    price: '85000',
-    description: 'Latest iPhone with advanced camera system',
-    status: 'available',
-    dateAdded: '2024-05-01T10:30:00Z'
-  },
-  {
-    id: '2',
-    name: 'MacBook Air M2',
-    category: 'laptops',
-    price: '150000',
-    description: 'Ultra-thin laptop with M2 chip',
-    status: 'available',
-    dateAdded: '2024-05-01T10:30:00Z'
-  }
-];
-
-function getCourseModules(course) {
-  const modules = {
-    'Software Development': 12,
-    'Data Analysis': 10,
-    'UI/UX Design': 8,
-    'Cybersecurity': 14,
-    'Digital Marketing': 9,
-    'Mobile App Development': 11
-  };
-  return modules[course] || 10;
-}
 
 // Register endpoint
 app.post('/api/register', validateRegister, async (req, res) => {
     try {
         const { firstName, lastName, email, password, course, phone } = req.body;
+
+        // Hash password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Get current date in ISO format
         const currentDate = new Date().toISOString();
         
         try {
+            // Try to use database
             const [userExists] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
             
             if (userExists && userExists.length > 0) {
                 return res.status(400).json({ message: 'User already exists' });
             }
             
+            // Insert user into database
             const [result] = await pool.query(
                 'INSERT INTO users (firstName, lastName, email, password, course, registrationDate, lastLogin) VALUES (?, ?, ?, ?, ?, ?, ?)',
                 [firstName, lastName, email, hashedPassword, course, currentDate, currentDate]
@@ -104,18 +74,31 @@ app.post('/api/register', validateRegister, async (req, res) => {
             
             const userId = result.insertId;
             
+            // Insert initial progress
             await pool.query(
                 'INSERT INTO user_progress (userId, course, completed, totalModules) VALUES (?, ?, ?, ?)',
                 [userId, course, 0, getCourseModules(course)]
             );
             
+            // Get the newly created user (without password)
             const [rows] = await pool.query(
                 'SELECT id, firstName, lastName, email, course, registrationDate, lastLogin, profileImage FROM users WHERE id = ?', 
                 [userId]
             );
             
-            const token = jwt.sign({ id: userId, email }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
-            const refreshToken = jwt.sign({ id: userId, email }, JWT_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRY });
+            // Create JWT token
+            const token = jwt.sign(
+                { id: userId, email },
+                JWT_SECRET,
+                { expiresIn: TOKEN_EXPIRY }
+            );
+            
+            // Create refresh token with longer expiry
+            const refreshToken = jwt.sign(
+                { id: userId, email },
+                JWT_SECRET,
+                { expiresIn: REFRESH_TOKEN_EXPIRY }
+            );
             
             res.status(201).json({
                 message: 'User registered successfully',
@@ -126,10 +109,13 @@ app.post('/api/register', validateRegister, async (req, res) => {
         } catch (dbError) {
             console.error('Database error, using in-memory fallback:', dbError);
             
+            // Fallback to in-memory if database fails
+            // Check if user already exists
             if (users.find(user => user.email === email)) {
                 return res.status(400).json({ message: 'User already exists' });
             }
 
+            // Create new user
             const newUser = {
                 id: users.length + 1,
                 firstName,
@@ -140,14 +126,33 @@ app.post('/api/register', validateRegister, async (req, res) => {
                 phone: phone || null,
                 registrationDate: currentDate,
                 lastLogin: currentDate,
-                role: 'user'
+                progress: [
+                    {
+                        course,
+                        completed: 0,
+                        totalModules: getCourseModules(course)
+                    }
+                ],
+                profileImage: null
             };
 
             users.push(newUser);
             
-            const token = jwt.sign({ id: newUser.id, email: newUser.email }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
-            const refreshToken = jwt.sign({ id: newUser.id, email: newUser.email }, JWT_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRY });
+            // Create JWT token
+            const token = jwt.sign(
+                { id: newUser.id, email: newUser.email },
+                JWT_SECRET,
+                { expiresIn: TOKEN_EXPIRY }
+            );
+            
+            // Create refresh token with longer expiry
+            const refreshToken = jwt.sign(
+                { id: newUser.id, email: newUser.email },
+                JWT_SECRET,
+                { expiresIn: REFRESH_TOKEN_EXPIRY }
+            );
 
+            // Return user info without password
             const { password: _, ...userWithoutPassword } = newUser;
 
             res.status(201).json({
@@ -169,6 +174,7 @@ app.post('/api/login', validateLogin, async (req, res) => {
         const { email, password } = req.body;
 
         try {
+            // Try to use database
             const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
             
             if (rows.length === 0) {
@@ -176,16 +182,31 @@ app.post('/api/login', validateLogin, async (req, res) => {
             }
             
             const user = rows[0];
+            
+            // Validate password
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) {
                 return res.status(400).json({ message: 'Invalid credentials' });
             }
             
+            // Update last login time
             await pool.query('UPDATE users SET lastLogin = ? WHERE id = ?', [new Date().toISOString(), user.id]);
             
-            const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
-            const refreshToken = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRY });
+            // Create JWT token
+            const token = jwt.sign(
+                { id: user.id, email: user.email },
+                JWT_SECRET,
+                { expiresIn: TOKEN_EXPIRY }
+            );
             
+            // Create refresh token with longer expiry
+            const refreshToken = jwt.sign(
+                { id: user.id, email: user.email },
+                JWT_SECRET,
+                { expiresIn: REFRESH_TOKEN_EXPIRY }
+            );
+            
+            // Remove password from response
             delete user.password;
             
             res.json({
@@ -197,23 +218,39 @@ app.post('/api/login', validateLogin, async (req, res) => {
         } catch (dbError) {
             console.error('Database error, using in-memory fallback:', dbError);
             
+            // Fallback to in-memory if database fails
+            // Find user
             const user = users.find(user => user.email === email);
             if (!user) {
                 return res.status(400).json({ message: 'Invalid credentials' });
             }
 
+            // Validate password
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) {
                 return res.status(400).json({ message: 'Invalid credentials' });
             }
 
+            // Update last login time
             user.lastLogin = new Date().toISOString();
+
+            // Create JWT token
+            const token = jwt.sign(
+                { id: user.id, email: user.email },
+                JWT_SECRET,
+                { expiresIn: TOKEN_EXPIRY }
+            );
             
-            const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
-            const refreshToken = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRY });
-            
+            // Create refresh token with longer expiry
+            const refreshToken = jwt.sign(
+                { id: user.id, email: user.email },
+                JWT_SECRET,
+                { expiresIn: REFRESH_TOKEN_EXPIRY }
+            );
+
+            // Return user info without password
             const { password: _, ...userWithoutPassword } = user;
-            
+
             res.json({
                 message: 'Login successful',
                 token,
@@ -227,185 +264,300 @@ app.post('/api/login', validateLogin, async (req, res) => {
     }
 });
 
-// Delivery endpoints
-app.post('/api/deliveries', async (req, res) => {
+// Refresh token endpoint
+app.post('/api/refresh-token', async (req, res) => {
     try {
-        const deliveryData = {
-            id: 'JET-' + Date.now(),
-            ...req.body,
-            timestamp: new Date().toISOString(),
-            status: 'Pending'
-        };
+        const { refreshToken } = req.body;
         
-        deliveries.push(deliveryData);
-        
-        res.status(201).json({
-            message: 'Delivery booked successfully',
-            delivery: deliveryData
-        });
-    } catch (error) {
-        console.error('Delivery booking error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-app.get('/api/deliveries/:trackingId', async (req, res) => {
-    try {
-        const { trackingId } = req.params;
-        const delivery = deliveries.find(d => d.id === trackingId);
-        
-        if (!delivery) {
-            return res.status(404).json({ message: 'Delivery not found' });
+        if (!refreshToken) {
+            return res.status(400).json({ message: 'Refresh token is required' });
         }
         
-        res.json(delivery);
-    } catch (error) {
-        console.error('Delivery tracking error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-app.get('/api/deliveries', auth, async (req, res) => {
-    try {
-        res.json(deliveries);
-    } catch (error) {
-        console.error('Get deliveries error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-app.put('/api/deliveries/:id/status', auth, async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { status } = req.body;
+        // Verify refresh token
+        const decoded = jwt.verify(refreshToken, JWT_SECRET);
         
-        const deliveryIndex = deliveries.findIndex(d => d.id === id);
-        if (deliveryIndex === -1) {
-            return res.status(404).json({ message: 'Delivery not found' });
-        }
-        
-        deliveries[deliveryIndex].status = status;
+        // Create new access token
+        const token = jwt.sign(
+            { id: decoded.id, email: decoded.email },
+            JWT_SECRET,
+            { expiresIn: TOKEN_EXPIRY }
+        );
         
         res.json({
-            message: 'Delivery status updated',
-            delivery: deliveries[deliveryIndex]
+            message: 'Token refreshed successfully',
+            token
         });
     } catch (error) {
-        console.error('Update delivery status error:', error);
-        res.status(500).json({ message: 'Server error' });
+        console.error('Refresh token error:', error);
+        res.status(401).json({ message: 'Invalid or expired refresh token' });
     }
 });
 
-// Gadget endpoints
-app.get('/api/gadgets', async (req, res) => {
+// Protected route - Get user profile
+app.get('/api/me', auth, async (req, res) => {
     try {
-        res.json(gadgets);
+        const userId = req.user.id;
+        
+        try {
+            // Try to use database
+            const [rows] = await pool.query(
+                'SELECT id, firstName, lastName, email, course, registrationDate, lastLogin, profileImage FROM users WHERE id = ?', 
+                [userId]
+            );
+            
+            if (rows.length === 0) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            const user = rows[0];
+            
+            // Get user progress
+            const [progressRows] = await pool.query(
+                'SELECT course, completed, totalModules FROM user_progress WHERE userId = ?',
+                [userId]
+            );
+            
+            user.progress = progressRows;
+            
+            res.json(user);
+        } catch (dbError) {
+            console.error('Database error, using in-memory fallback:', dbError);
+            
+            // Fallback to in-memory if database fails
+            const user = users.find(user => user.id === userId);
+            
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            // Return user info without password
+            const { password, ...userWithoutPassword } = user;
+            
+            res.json(userWithoutPassword);
+        }
     } catch (error) {
-        console.error('Get gadgets error:', error);
+        console.error('Get profile error:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
-app.post('/api/gadgets', auth, async (req, res) => {
+// Update user profile
+app.put('/api/profile', auth, async (req, res) => {
     try {
-        const gadget = {
-            id: Date.now().toString(),
-            ...req.body,
-            dateAdded: new Date().toISOString()
-        };
+        const { firstName, lastName, profileImage } = req.body;
+        const userId = req.user.id;
         
-        gadgets.push(gadget);
-        
-        res.status(201).json({
-            message: 'Gadget added successfully',
-            gadget
-        });
+        try {
+            // Try to use database
+            // Update fields if provided
+            let updateQuery = 'UPDATE users SET ';
+            const updateParams = [];
+            
+            if (firstName) {
+                updateQuery += 'firstName = ?, ';
+                updateParams.push(firstName);
+            }
+            
+            if (lastName) {
+                updateQuery += 'lastName = ?, ';
+                updateParams.push(lastName);
+            }
+            
+            if (profileImage) {
+                updateQuery += 'profileImage = ?, ';
+                updateParams.push(profileImage);
+            }
+            
+            // Remove trailing comma and space
+            updateQuery = updateQuery.slice(0, -2);
+            
+            updateQuery += ' WHERE id = ?';
+            updateParams.push(userId);
+            
+            if (updateParams.length > 1) {
+                await pool.query(updateQuery, updateParams);
+            }
+            
+            // Get updated user
+            const [rows] = await pool.query(
+                'SELECT id, firstName, lastName, email, course, registrationDate, lastLogin, profileImage FROM users WHERE id = ?', 
+                [userId]
+            );
+            
+            if (rows.length === 0) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            res.json({
+                message: 'Profile updated successfully',
+                user: rows[0]
+            });
+        } catch (dbError) {
+            console.error('Database error, using in-memory fallback:', dbError);
+            
+            // Fallback to in-memory if database fails
+            const user = users.find(user => user.id === userId);
+            
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            // Update fields if provided
+            if (firstName) user.firstName = firstName;
+            if (lastName) user.lastName = lastName;
+            if (profileImage) user.profileImage = profileImage;
+            
+            // Return updated user without password
+            const { password, ...userWithoutPassword } = user;
+            
+            res.json({
+                message: 'Profile updated successfully',
+                user: userWithoutPassword
+            });
+        }
     } catch (error) {
-        console.error('Add gadget error:', error);
+        console.error('Update profile error:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
-app.put('/api/gadgets/:id', auth, async (req, res) => {
+// Update course progress
+app.put('/api/progress', auth, async (req, res) => {
     try {
-        const { id } = req.params;
-        const gadgetIndex = gadgets.findIndex(g => g.id === id);
+        const { course, completed } = req.body;
+        const userId = req.user.id;
         
-        if (gadgetIndex === -1) {
-            return res.status(404).json({ message: 'Gadget not found' });
+        if (!course || completed === undefined) {
+            return res.status(400).json({ message: 'Course name and completed modules are required' });
         }
         
-        gadgets[gadgetIndex] = { ...gadgets[gadgetIndex], ...req.body };
-        
-        res.json({
-            message: 'Gadget updated successfully',
-            gadget: gadgets[gadgetIndex]
-        });
-    } catch (error) {
-        console.error('Update gadget error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-app.delete('/api/gadgets/:id', auth, async (req, res) => {
-    try {
-        const { id } = req.params;
-        const gadgetIndex = gadgets.findIndex(g => g.id === id);
-        
-        if (gadgetIndex === -1) {
-            return res.status(404).json({ message: 'Gadget not found' });
+        try {
+            // Try to use database
+            // Check if progress entry exists
+            const [rows] = await pool.query(
+                'SELECT * FROM user_progress WHERE userId = ? AND course = ?',
+                [userId, course]
+            );
+            
+            if (rows.length === 0) {
+                // Create new progress entry
+                await pool.query(
+                    'INSERT INTO user_progress (userId, course, completed, totalModules) VALUES (?, ?, ?, ?)',
+                    [userId, course, completed, getCourseModules(course)]
+                );
+            } else {
+                // Update existing progress entry
+                await pool.query(
+                    'UPDATE user_progress SET completed = ? WHERE userId = ? AND course = ?',
+                    [completed, userId, course]
+                );
+            }
+            
+            // Get all progress for user
+            const [progressRows] = await pool.query(
+                'SELECT course, completed, totalModules FROM user_progress WHERE userId = ?',
+                [userId]
+            );
+            
+            res.json({
+                message: 'Progress updated successfully',
+                progress: progressRows
+            });
+        } catch (dbError) {
+            console.error('Database error, using in-memory fallback:', dbError);
+            
+            // Fallback to in-memory if database fails
+            const user = users.find(user => user.id === userId);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            
+            // Find the course progress entry or create one
+            const progressEntry = user.progress.find(p => p.course === course);
+            
+            if (progressEntry) {
+                progressEntry.completed = completed;
+            } else {
+                user.progress.push({
+                    course,
+                    completed,
+                    totalModules: getCourseModules(course)
+                });
+            }
+            
+            res.json({
+                message: 'Progress updated successfully',
+                progress: user.progress
+            });
         }
-        
-        gadgets.splice(gadgetIndex, 1);
-        
-        res.json({ message: 'Gadget deleted successfully' });
     } catch (error) {
-        console.error('Delete gadget error:', error);
+        console.error('Update progress error:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
-// User management endpoints (admin only)
-app.get('/api/users', auth, async (req, res) => {
-    try {
-        const usersWithoutPasswords = users.map(({ password, ...user }) => user);
-        res.json(usersWithoutPasswords);
-    } catch (error) {
-        console.error('Get users error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-app.delete('/api/users/:email', auth, async (req, res) => {
-    try {
-        const { email } = req.params;
-        const userIndex = users.findIndex(u => u.email === email);
-        
-        if (userIndex === -1) {
-            return res.status(404).json({ message: 'User not found' });
+// Get all courses (non-protected route)
+app.get('/api/courses', (req, res) => {
+    const coursesData = [
+        {
+            id: "c001",
+            title: "Software Development",
+            modules: 12
+        },
+        {
+            id: "c002",
+            title: "Data Analysis",
+            modules: 10
+        },
+        {
+            id: "c003",
+            title: "UI/UX Design",
+            modules: 8
+        },
+        {
+            id: "c004",
+            title: "Forex Trading",
+            modules: 9
+        },
+        {
+            id: "c005",
+            title: "Graphics Design & Video Editing",
+            modules: 11
         }
-        
-        users.splice(userIndex, 1);
-        
-        res.json({ message: 'User deleted successfully' });
-    } catch (error) {
-        console.error('Delete user error:', error);
-        res.status(500).json({ message: 'Server error' });
+    ];
+    
+    res.json(coursesData);
+});
+
+// Helper function to get course modules count
+function getCourseModules(course) {
+    switch(course) {
+        case 'softwareDev':
+        case 'Software Development': return 12;
+        case 'dataAnalysis':
+        case 'Data Analysis': return 10;
+        case 'UI/UX Design': return 8;
+        case 'forex':
+        case 'Forex Trading': return 9;
+        case 'videoGraphics':
+        case 'Graphics Design & Video Editing': return 11;
+        default: return 10;
     }
-});
+}
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-    res.json({ 
-        status: 'OK', 
-        timestamp: new Date().toISOString(),
-        users: users.length,
-        deliveries: deliveries.length,
-        gadgets: gadgets.length
-    });
-});
-
+// Start server
 app.listen(PORT, () => {
-    console.log(`JE Tech Hub server running on port ${PORT}`);
-    console.log(`Health check: http://localhost:${PORT}/health`);
+    console.log(`Server running on port ${PORT}`);
 });
+
+console.log(`
+-------------------------------------
+IMPORTANT: This is a demo server only!
+In a production environment, you should:
+1. Use a real database (MySQL, etc.) - Already included but using fallback
+2. Store JWT secret in environment variables
+3. Add proper error handling - Improved but can be enhanced further
+4. Implement rate limiting
+5. Use HTTPS
+-------------------------------------
+`);
