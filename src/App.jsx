@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
+import DashboardPage from './pages/DashboardPage';
+import AdminPage from './pages/AdminPage';
 import NotFound from './pages/NotFound';
 import './App.css';
 
@@ -19,6 +21,8 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

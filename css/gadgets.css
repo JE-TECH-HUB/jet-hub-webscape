@@ -1,4 +1,3 @@
-
 /* Gadgets Page Styling */
 
 /* Filter Controls */
@@ -451,5 +450,131 @@
   .hero-slider .button .btn {
     width: 100%;
     text-align: center;
+  }
+}
+
+/* Delivery Service Section */
+.delivery-section {
+  background: linear-gradient(135deg, #1A76D1, #4A96F1);
+  color: white;
+  padding: 60px 0;
+  margin: 40px 0;
+}
+
+.delivery-section h2 {
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.delivery-section p {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.delivery-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.delivery-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.delivery-btn:hover {
+  background: white;
+  color: #1A76D1;
+  transform: translateY(-2px);
+}
+
+/* Modal enhancements */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.modal-header {
+  background: linear-gradient(to right, #1A76D1, #4A96F1);
+  color: white;
+  border: none;
+  padding: 18px 25px;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.close {
+  color: white;
+  opacity: 0.9;
+  text-shadow: none;
+  transition: all 0.2s;
+}
+
+.close:hover {
+  color: white;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.form-control:focus {
+  border-color: #1A76D1;
+  box-shadow: 0 0 10px rgba(26,118,209,0.2);
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background: #1A76D1;
+}
+
+@media (max-width: 767px) {
+  .delivery-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .delivery-btn {
+    width: 80%;
+    max-width: 300px;
   }
 }
