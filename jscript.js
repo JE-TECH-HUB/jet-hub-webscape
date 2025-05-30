@@ -21,8 +21,11 @@ function initializeWebsite() {
     const preloader = document.querySelector('.preloader');
     if (preloader) {
         setTimeout(() => {
-            preloader.classList.add('hidden');
-        }, 300);
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 300);
+        }, 500);
     }
     
     // Initialize smooth scrolling
@@ -30,6 +33,9 @@ function initializeWebsite() {
     
     // Initialize lazy loading for images
     initLazyLoading();
+    
+    // Initialize contact form
+    initContactForm();
 }
 
 function initSmoothScroll() {
@@ -64,6 +70,32 @@ function initLazyLoading() {
         });
         
         images.forEach(img => imageObserver.observe(img));
+    }
+}
+
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Contact form submitted:', data);
+            
+            // Show success message
+            const submitBtn = this.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Message Sent!';
+            submitBtn.style.backgroundColor = '#28a745';
+            
+            setTimeout(() => {
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.style.backgroundColor = '';
+            }, 2000);
+        });
     }
 }
 

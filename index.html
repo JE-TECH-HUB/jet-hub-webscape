@@ -16,666 +16,1119 @@
 <!-- Favicon -->
 <link rel="icon" href="images/JE Techhub logo - Copy.png">
 
-<!-- Critical CSS - Load first -->
+<!-- Critical CSS - Load first for performance -->
 <link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="css/bootstrap.min.css"></noscript>
 
-<!-- Google Fonts - Load asynchronously -->
+<!-- Google Fonts - Optimized loading -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Essential CSS only -->
+<!-- Essential CSS -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/custom.css">
 
-<!-- FontAwesome - Load async -->
-<script async src="https://kit.fontawesome.com/69d2ba44c8.js" crossorigin="anonymous"></script>
+<!-- FontAwesome - Load efficiently -->
+<link rel="preload" href="https://kit.fontawesome.com/69d2ba44c8.js" as="script" onload="this.onload=null;this.rel='script'">
 
-<style>
-/* Critical above-the-fold styles */
-.preloader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  transition: opacity 0.3s ease;
-}
-
-.loader {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #1A76D1;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Essential header styles */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-/* Hero section optimization */
-.slider {
-  min-height: 500px;
-  background: linear-gradient(135deg, #1A76D1 0%, #0d62b8 100%);
-}
-
-.single-slider {
-  background-size: cover;
-  background-position: center;
-  min-height: 500px;
-  display: flex;
-  align-items: center;
-}
-
-/* Card optimizations */
-.card {
-  border: none;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-  height: 100%;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-}
-
-.card-image {
-  height: 200px;
-  overflow: hidden;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card-button {
-  background: darkblue;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.card-button:hover {
-  background: orange;
-}
-</style>
+<!-- Preload critical resources -->
+<link rel="preload" href="images/JE Techhub logo.png" as="image">
+<link rel="preload" href="js/jquery.min.js" as="script">
 
 </head>
 
 <body>
 
-<!-- Simplified Preloader -->
+<!-- Preloader -->
 <div class="preloader" id="preloader">
-  <div class="loader"></div>
+	<div class="loader">
+		<div class="loader-outter"></div>
+		<div class="loader-inner"></div>
+	</div>
 </div>
+<!--/ End Preloader -->
 
 <!-- Header Area -->
-<header class="header">
-<div class="header-inner">
-<div class="container">
-<div class="inner">
-<div class="row">
-<div class="col-lg-3 col-md-3 col-12">
-<div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png" alt="JE Tech Hub"></a>
-</div>
-<div class="mobile-nav"></div>
-</div>
-<div class="col-lg-7 col-md-9 col-12">
-<div class="main-menu">
-<nav class="navigation">
-<ul class="nav menu">
-<li class="active"><a href="#" class="scroll">Home</a></li>
-<li><a href="about.html" class="scroll">About Us</a></li>
-<li><a href="programs.html" class="scroll">Programs</a></li>
-<li><a href="contact.html" class="scroll">Contact Us</a></li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-</div>
-</div>
+<header class="header" >
+	<!-- Topbar -->
+	<div class="topbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-5 col-12">
+					<!-- Contact -->
+					<ul class="top-link">
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul>
+					<!-- End Contact -->
+				</div>
+				<div class="col-lg-6 col-md-7 col-12">
+					<!-- Top Contact -->
+					<ul class="top-contact">
+						<li><i class="fa fa-phone"></i>+234 813 866 8827</li>
+						<li><i class="fa fa-envelope"></i><a href="mailto:support@yourmail.com">jetechhubtech@gmail.com</a></li>
+					</ul>
+					<!-- End Top Contact -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Topbar -->
+	<!-- Header Inner -->
+	<div class="header-inner">
+		<div class="container">
+			<div class="inner">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-12">
+						<!-- Start Logo -->
+						<div class="logo">
+							<a href="index.html"><img src="images/JE Techhub logo.png" alt="#"></a>
+						</div>
+						<!-- End Logo -->
+						<!-- Mobile Nav -->
+						<div class="mobile-nav"></div>
+						<!-- End Mobile Nav -->
+					</div>
+					<div class="col-lg-7 col-md-9 col-12">
+						<!-- Main Menu -->
+						<div class="main-menu">
+							<nav class="navigation">
+								<ul class="nav menu">
+									<li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="index.html">Home Page 1</a></li>
+										</ul>
+									</li>
+									<li><a href="about.html">About Us </a></li>
+									<li><a href="programs.html">Programs </a></li>
+									<li><a href="gadgets.html">Gadgets </a></li>
+									<li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
+										<ul class="dropdown">
+											<li><a href="404.html">404 Error</a></li>
+										</ul>
+									</li>
+									<li><a href="contact.html">Contact Us</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!--/ End Main Menu -->
+					</div>
+					<div class="col-lg-2 col-12">
+						<div class="get-quote">
+							<a href="getStarted.html" class="btn">Get Started</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ End Header Inner -->
 </header>
+<!-- End Header Area -->
 
-<main>
-<!-- Hero Section -->
-<section class="slider" id="home">
-<div class="hero-slider">
-<div class="single-slider" style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1472&auto=format&fit=crop')">
-<div class="container">
-<div class="row">
-<div class="col-lg-7">
-<div class="text">
-<h1>LEARN <span>GROW <br>AND EXPLORE</span> ENDLESS <span>OPPORTUNITIES!</span></h1>
-<p>Join a community of like-minded learners and industry professionals who are passionate about technology and innovation.</p>
-<div class="button">
-<a href="getStarted.html" class="btn">Join Now</a>
-<a href="about.html" class="btn primary">Learn More</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Slider Area -->
+<section class="slider" >
+	<div class="hero-slider">
+		<!-- Start Single Slider -->
+		<div class="single-slider" style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1472&auto=format&fit=crop')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7">
+						<div class="text">
+							<h1>LEARN <span>GROW <br>AND EXPLORE</span> ENDLESS <span>OPPORTUNITIES!</span></h1>
+							<p>Join a community of like-minded learners and industry professionals who are passionate about technology and innovation. </p>
+							<div class="button">
+								<a href="getStarted.html" class="btn">Join Now</a>
+								<a href="about.html" class="btn primary">Learn More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Single Slider -->
+	</div>
 </section>
+<!--/ End Slider Area -->
 
-<!-- Quick Stats Section -->
+<!-- Start Schedule Area -->
 <section class="schedule">
-<div class="container">
-<div class="schedule-inner">
-<div class="row">
-<div class="col-lg-4 col-md-6 col-12">
-<div class="single-schedule first">
-<div class="inner">
-<div class="icon">
-<i class="fa fa-cogs" aria-hidden="true"></i>
-</div>
-<div class="single-content">
-<h4>Our Mission</h4>
-<p>To connect education and technology with innovative and practical tutoring that enhances tech skills.</p>
-<a href="about.html#mission">LEARN MORE <i class="fa fa-long-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 col-12">
-<div class="single-schedule middle">
-<div class="inner">
-<div class="icon">
-<i class="icofont-prescription"></i>
-</div>
-<div class="single-content">
-<h4>Our Vision</h4>
-<p>Shaping the future of tech—raising brilliant minds and crafting skilled professionals.</p>
-<a href="about.html#vision">LEARN MORE <i class="fa fa-long-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 col-12">
-<div class="single-schedule last">
-<div class="inner">
-<div class="icon">
-<i class="fa fa-users" aria-hidden="true"></i>
-</div>
-<div class="single-content">
-<h4>Our Community</h4>
-<p>Join over 30+ graduates who have transformed their careers with us.</p>
-<button class="card-button" onclick="showDeliveryModal()">Book Delivery</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+	<div class="container">
+		<div class="schedule-inner">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12 ">
+					<!-- single-schedule -->
+					<div class="single-schedule first">
+						<div class="inner">
+							<div class="icon">
+								<i class="fa fa-cogs" aria-hidden="true"></i>
+							</div>
+							<div class="single-content">
+								<span>Our Mission</span>
+								<h4>Our Mission</h4>
+								<p>To connect education and technology with innovative and practical tutoring that enhances tech skills.</p>
+								<a href="about.html#mission">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- single-schedule -->
+					<div class="single-schedule middle">
+						<div class="inner">
+							<div class="icon">
+								<i class="icofont-prescription"></i>
+							</div>
+							<div class="single-content">
+								<span>Our Vision</span>
+								<h4>Our Vision</h4>
+								<p>Shaping the future of tech—raising brilliant minds and crafting skilled professionals.</p>
+								<a href="about.html#vision">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- single-schedule -->
+					<div class="single-schedule last">
+						<div class="inner">
+							<div class="icon">
+								<i class="fa fa-users" aria-hidden="true"></i>
+							</div>
+							<div class="single-content">
+								<span>Our Community</span>
+								<h4>Our Community</h4>
+								<p>Join over 30+ graduates who have transformed their careers with us.</p>
+								<button class="btn" onclick="showDeliveryModal()">Book Now</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
+<!--/End Start schedule Area -->
 
-<!-- Programs Section -->
-<section class="section">
-<div class="container">
-<div class="row">
-<div class="col-12">
-<h2 class="text-center mb-5">Our Training Programs</h2>
-</div>
-</div>
-
-<div class="row">
-<div class="col-lg-4 col-md-6 col-12 mb-4">
-<div class="card">
-<div class="card-image">
-<img src="images/soft.jpg" alt="Software Development" loading="lazy">
-</div>
-<div class="card-content p-4">
-<h3 class="card-title">Software Development</h3>
-<p class="card-description">Learn modern web development technologies including HTML, CSS, JavaScript, and popular frameworks.</p>
-<a href="courses.html" class="card-button">Learn More</a>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 col-12 mb-4">
-<div class="card">
-<div class="card-image">
-<img src="images/analysis.jpg" alt="Data Analysis" loading="lazy">
-</div>
-<div class="card-content p-4">
-<h3 class="card-title">Data Analysis</h3>
-<p class="card-description">Master data analysis tools like Excel, Python, SQL, and Power BI to make data-driven decisions.</p>
-<a href="courses.html" class="card-button">Learn More</a>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 col-12 mb-4">
-<div class="card">
-<div class="card-image">
-<img src="images/Uiux.jpg" alt="UI/UX Design" loading="lazy">
-</div>
-<div class="card-content p-4">
-<h3 class="card-title">UI/UX Design</h3>
-<p class="card-description">Create beautiful and user-friendly interfaces using Figma, Adobe XD, and design principles.</p>
-<a href="courses.html" class="card-button">Learn More</a>
-</div>
-</div>
-</div>
-</div>
-
-<div class="text-center mt-4">
-<a href="programs.html" class="card-button">View All Programs</a>
-</div>
-</div>
+<!-- Start Feautes -->
+<section class="Feautes section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>We Are Always Ready For You</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>Unlock your tech potential with JE Tech Hub - where innovation meets education.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-12">
+				<!-- Start Single features -->
+				<div class="single-features">
+					<div class="signle-icon">
+						<i class="icofont icofont-code-alt"></i>
+					</div>
+					<h3>Software Development</h3>
+					<p>Learn modern web development technologies including HTML, CSS, JavaScript, React, Node.js and popular frameworks.</p>
+				</div>
+				<!-- End Single features -->
+			</div>
+			<div class="col-lg-4 col-12">
+				<!-- Start Single features -->
+				<div class="single-features">
+					<div class="signle-icon">
+						<i class="icofont icofont-chart-pie"></i>
+					</div>
+					<h3>Data Analysis</h3>
+					<p>Master data analysis tools like Excel, Python, SQL, and Power BI to make data-driven decisions.</p>
+				</div>
+				<!-- End Single features -->
+			</div>
+			<div class="col-lg-4 col-12">
+				<!-- Start Single features -->
+				<div class="single-features last">
+					<div class="signle-icon">
+						<i class="icofont icofont-ui-touch-phone"></i>
+					</div>
+					<h3>UI/UX Design</h3>
+					<p>Create beautiful and user-friendly interfaces using Figma, Adobe XD, and design principles.</p>
+				</div>
+				<!-- End Single features -->
+			</div>
+		</div>
+	</div>
 </section>
+<!--/ End Feautes -->
 
-<!-- Contact Section -->
-<section class="appointment" id="contact">
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-<div class="section-title text-center">
-<h2>We Are Always Ready For You</h2>
-<p>Send Us A Message And We'll Get Back To You</p>
+<!-- Start Fun-facts -->
+<div id="fun-facts" class="fun-facts section overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Fun -->
+				<div class="single-fun">
+					<i class="icofont icofont-home"></i>
+					<div class="content">
+						<span class="counter">50</span>
+						<p>Training Programs</p>
+					</div>
+				</div>
+				<!-- End Single Fun -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Fun -->
+				<div class="single-fun">
+					<i class="icofont icofont-user-alt-3"></i>
+					<div class="content">
+						<span class="counter">1720</span>
+						<p>Happy Students</p>
+					</div>
+				</div>
+				<!-- End Single Fun -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Fun -->
+				<div class="single-fun">
+					<i class="icofont-simple-smile"></i>
+					<div class="content">
+						<span class="counter">110</span>
+						<p>Projects Completed</p>
+					</div>
+				</div>
+				<!-- End Single Fun -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Start Single Fun -->
+				<div class="single-fun">
+					<i class="icofont icofont-table"></i>
+					<div class="content">
+						<span class="counter">320</span>
+						<p>Certified Graduates</p>
+					</div>
+				</div>
+				<!-- End Single Fun -->
+			</div>
+		</div>
+	</div>
 </div>
-</div>
-</div>
-<div class="row justify-content-center">
-<div class="col-lg-6 col-md-8 col-12">
-<form class="form" id="contactForm">
-<div class="row">
-<div class="col-lg-6 col-md-6 col-12">
-<div class="form-group">
-<input name="name" type="text" placeholder="Full Name" required>
-</div>
-</div>
-<div class="col-lg-6 col-md-6 col-12">
-<div class="form-group">
-<input name="email" type="email" placeholder="Email Address" required>
-</div>
-</div>
-<div class="col-lg-6 col-md-6 col-12">
-<div class="form-group">
-<input name="phone" type="text" placeholder="Phone Number" required>
-</div>
-</div>
-<div class="col-lg-6 col-md-6 col-12">
-<div class="form-group">
-<input name="subject" type="text" placeholder="Subject" required>
-</div>
-</div>
-<div class="col-lg-12 col-md-12 col-12">
-<div class="form-group">
-<textarea name="message" placeholder="Write Your Message Here....." required></textarea>
-</div>
-</div>
-<div class="col-lg-12 col-md-12 col-12">
-<div class="form-group">
-<input type="submit" value="Submit Message">
-</div>
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
+<!--/ End Fun-facts -->
+
+<!-- Start Why choose -->
+<section class="why-choose section" >
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Why Choose JE Tech Hub</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>We provide comprehensive tech education with hands-on experience and industry-relevant skills.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-12">
+				<!-- Start Choose Left -->
+				<div class="choose-left">
+					<h3>Who We Are</h3>
+					<p>JE Tech Hub is a leading technology education center located in Gwagwalada, Abuja. We specialize in providing quality tech training, gadget sales, and repair services to empower individuals with the skills they need to succeed in the digital age. </p>
+					<p>Our mission is to bridge the gap between traditional education and modern technology demands by offering practical, hands-on training programs that prepare students for real-world challenges.</p>
+					<div class="row">
+						<div class="col-lg-6">
+							<ul class="list">
+								<li><i class="fa fa-caret-right"></i>Expert Instructors</li>
+								<li><i class="fa fa-caret-right"></i>Hands-on Training</li>
+								<li><i class="fa fa-caret-right"></i>Industry Relevant Curriculum</li>
+							</ul>
+						</div>
+						<div class="col-lg-6">
+							<ul class="list">
+								<li><i class="fa fa-caret-right"></i>Job Placement Support</li>
+								<li><i class="fa fa-caret-right"></i>Affordable Pricing</li>
+								<li><i class="fa fa-caret-right"></i>Flexible Schedules</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- End Choose Left -->
+			</div>
+			<div class="col-lg-6 col-12">
+				<!-- Start Choose Rights -->
+				<div class="choose-right">
+					<div class="video-image">
+						<!-- Video Animation -->
+						<div class="promo-video">
+							<div class="waves-block">
+								<div class="waves wave-1"></div>
+								<div class="waves wave-2"></div>
+								<div class="waves wave-3"></div>
+							</div>
+						</div>
+						<!--/ End Video Animation -->
+						<a href="https://www.youtube.com/watch?v=RFVXy6CRVR4" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
+					</div>
+				</div>
+				<!-- End Choose Rights -->
+			</div>
+		</div>
+	</div>
 </section>
+<!--/ End Why choose -->
+
+<!-- Start Call to action -->
+<section class="call-action overlay" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-12">
+				<div class="content">
+					<h2>Do you need Our Emergency Service? Call @ +234 813 866 8827</h2>
+					<p>Join thousands of satisfied students who have transformed their careers with JE Tech Hub. Start your tech journey today!</p>
+					<div class="button">
+						<a href="contact.html" class="btn">Contact Now</a>
+						<a href="about.html" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Call to action -->
+
+<!-- Start portfolio -->
+<section class="portfolio section" >
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Training Gallery</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>Take a look at our state-of-the-art training facilities and see our students in action.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-12">
+				<div class="owl-carousel portfolio-slider">
+					<div class="single-pf">
+						<img src="images/soft.jpg" alt="#">
+						<a href="images/soft.jpg" class="btn">View Details</a>
+					</div>
+					<div class="single-pf">
+						<img src="images/analysis.jpg" alt="#">
+						<a href="images/analysis.jpg" class="btn">View Details</a>
+					</div>
+					<div class="single-pf">
+						<img src="images/Uiux.jpg" alt="#">
+						<a href="images/Uiux.jpg" class="btn">View Details</a>
+					</div>
+					<div class="single-pf">
+						<img src="images/graphics1.jpg" alt="#">
+						<a href="images/graphics1.jpg" class="btn">View Details</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End portfolio -->
+
+<!-- Start service -->
+<section class="services section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Our Services</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>We offer a comprehensive range of tech services to meet all your technology needs.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="icofont icofont-code-alt"></i>
+					<h4><a href="programs.html">Web Development Training</a></h4>
+					<p>Learn to build responsive websites and web applications using the latest technologies and frameworks. </p>	
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="icofont icofont-chart-pie"></i>
+					<h4><a href="programs.html">Data Analysis Training</a></h4>
+					<p>Master data analysis tools and techniques to transform raw data into actionable business insights. </p>	
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="icofont icofont-ui-touch-phone"></i>
+					<h4><a href="programs.html">UI/UX Design Training</a></h4>
+					<p>Create beautiful and user-friendly interfaces using industry-standard design tools and principles. </p>	
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="icofont icofont-money-bag"></i>
+					<h4><a href="programs.html">Forex Trading Training</a></h4>
+					<p>Learn professional forex trading strategies and risk management techniques from experienced traders. </p>	
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="icofont icofont-repair"></i>
+					<h4><a href="gadgets.html">Gadget Repair Services</a></h4>
+					<p>Professional repair services for laptops, smartphones, tablets and other electronic devices. </p>	
+				</div>
+				<!-- End Single Service -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Service -->
+				<div class="single-service">
+					<i class="icofont icofont-shopping-cart"></i>
+					<h4><a href="gadgets.html">Gadget Sales</a></h4>
+					<p>Quality tech gadgets and accessories at affordable prices with warranty and support services. </p>	
+				</div>
+				<!-- End Single Service -->
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End service -->
+
+<!-- Pricing Table -->
+<section class="pricing-table section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Training Packages</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>Choose the perfect training package that fits your goals and budget.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Single Table -->
+			<div class="col-lg-4 col-md-12 col-12">
+				<div class="single-table">
+					<!-- Table Head -->
+					<div class="table-head">
+						<div class="icon">
+							<i class="icofont icofont-ui-timer"></i>
+						</div>
+						<h4 class="title">Basic Package</h4>
+						<div class="price">
+							<p class="amount">₦80,000<span>/ Course</span></p>
+						</div>	
+					</div>
+					<!-- Table List -->
+					<ul class="table-list">
+						<li><i class="icofont icofont-ui-check"></i>2 Months Training Duration</li>
+						<li><i class="icofont icofont-ui-check"></i>Certificate Upon Completion</li>
+						<li><i class="icofont icofont-ui-check"></i>Basic Project Portfolio</li>
+						<li><i class="icofont icofont-ui-check"></i>Email Support</li>
+						<li class="cross"><i class="icofont icofont-ui-close"></i>Job Placement Support</li>
+					</ul>
+					<div class="table-bottom">
+						<a class="btn" href="getStarted.html">Get Started</a>
+					</div>
+					<!-- Table Bottom -->
+				</div>
+			</div>
+			<!-- End Single Table-->
+			<!-- Single Table -->
+			<div class="col-lg-4 col-md-12 col-12">
+				<div class="single-table">
+					<!-- Table Head -->
+					<div class="table-head">
+						<div class="icon">
+							<i class="icofont icofont-diamond"></i>
+						</div>
+						<h4 class="title">Standard Package</h4>
+						<div class="price">
+							<p class="amount">₦120,000<span>/ Course</span></p>
+						</div>	
+					</div>
+					<!-- Table List -->
+					<ul class="table-list">
+						<li><i class="icofont icofont-ui-check"></i>3 Months Training Duration</li>
+						<li><i class="icofont icofont-ui-check"></i>Certificate Upon Completion</li>
+						<li><i class="icofont icofont-ui-check"></i>Professional Project Portfolio</li>
+						<li><i class="icofont icofont-ui-check"></i>Phone & Email Support</li>
+						<li><i class="icofont icofont-ui-check"></i>Job Placement Support</li>
+					</ul>
+					<div class="table-bottom">
+						<a class="btn" href="getStarted.html">Get Started</a>
+					</div>
+					<!-- Table Bottom -->
+				</div>
+			</div>
+			<!-- End Single Table-->
+			<!-- Single Table -->
+			<div class="col-lg-4 col-md-12 col-12">
+				<div class="single-table">
+					<!-- Table Head -->
+					<div class="table-head">
+						<div class="icon">
+							<i class="icofont icofont-crown"></i>
+						</div>
+						<h4 class="title">Premium Package</h4>
+						<div class="price">
+							<p class="amount">₦180,000<span>/ Course</span></p>
+						</div>	
+					</div>
+					<!-- Table List -->
+					<ul class="table-list">
+						<li><i class="icofont icofont-ui-check"></i>4 Months Training Duration</li>
+						<li><i class="icofont icofont-ui-check"></i>Certificate Upon Completion</li>
+						<li><i class="icofont icofont-ui-check"></i>Advanced Project Portfolio</li>
+						<li><i class="icofont icofont-ui-check"></i>24/7 Support</li>
+						<li><i class="icofont icofont-ui-check"></i>Guaranteed Job Placement</li>
+					</ul>
+					<div class="table-bottom">
+						<a class="btn" href="getStarted.html">Get Started</a>
+					</div>
+					<!-- Table Bottom -->
+				</div>
+			</div>
+			<!-- End Single Table-->
+		</div>	
+	</div>	
+</section>	
+<!--/ End Pricing Table -->
+
+<!-- Start Blog Area -->
+<section class="blog section" id="blog">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Keep up with Our Latest News</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>Stay updated with the latest trends in technology and announcements from JE Tech Hub.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Single Blog -->
+				<div class="single-news">
+					<div class="news-head">
+						<img src="images/hero1.jpeg" alt="#">
+					</div>
+					<div class="news-body">
+						<div class="news-content">
+							<div class="date">22 Aug, 2024</div>
+							<h2><a href="blog-single.html">5 Reasons Why Tech Skills Are Essential in 2024</a></h2>
+							<p class="text">Discover why learning technology skills has become more important than ever in today's digital world.</p>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Blog -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Single Blog -->
+				<div class="single-news">
+					<div class="news-head">
+						<img src="images/th.jpeg" alt="#">
+					</div>
+					<div class="news-body">
+						<div class="news-content">
+							<div class="date">15 Jul, 2024</div>
+							<h2><a href="blog-single.html">Success Story: From Zero to Web Developer in 3 Months</a></h2>
+							<p class="text">Read about how our student John transformed his career by learning web development at JE Tech Hub.</p>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Blog -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Single Blog -->
+				<div class="single-news">
+					<div class="news-head">
+						<img src="images/bd4466d1ccedaaf3403a49a10188f3d6.jpg" alt="#">
+					</div>
+					<div class="news-body">
+						<div class="news-content">
+							<div class="date">30 Jun, 2024</div>
+							<h2><a href="blog-single.html">Top 10 Programming Languages to Learn in 2024</a></h2>
+							<p class="text">Explore the most in-demand programming languages that can boost your career prospects this year.</p>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Blog -->
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Blog Area -->
+
+<!-- Start clients -->
+<div class="clients overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-12">
+				<div class="owl-carousel clients-slider">
+					<div class="single-clients">
+						<img src="img/client1.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client2.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client3.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client4.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client5.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client1.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client2.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client3.png" alt="#">
+					</div>
+					<div class="single-clients">
+						<img src="img/client4.png" alt="#">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Ens clients -->
+
+<!-- Start Appointment -->
+<section class="appointment">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>We Are Always Ready For You</h2>
+					<img src="img/section-img.png" alt="#">
+					<p>Send Us A Message And We'll Get Back To You</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-md-12 col-12">
+				<form class="form" action="#" id="contactForm">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<input name="name" type="text" placeholder="Full Name" required>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<input name="email" type="email" placeholder="Email Address" required>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<input name="phone" type="text" placeholder="Phone Number" required>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="form-group">
+								<div class="nice-select form-control wide" tabindex="0"><span class="current">Course of Interest</span>
+									<ul class="list">
+										<li data-value="Web Development" class="option selected">Web Development</li>
+										<li data-value="Data Analysis" class="option">Data Analysis</li>
+										<li data-value="UI/UX Design" class="option">UI/UX Design</li>
+										<li data-value="Forex Trading" class="option">Forex Trading</li>
+										<li data-value="Graphics Design" class="option">Graphics Design</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-12">
+							<div class="form-group">
+								<textarea name="message" placeholder="Write Your Message Here....." required></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-5 col-md-4 col-12">
+							<div class="form-group">
+								<div class="button">
+									<button type="submit" class="btn">Submit Message</button>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-7 col-md-8 col-12">
+							<p>( We will be confirm by an Text Message )</p>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-6 col-md-12 ">
+				<div class="appointment-image">
+					<img src="img/contact-img.png" alt="#">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Appointment -->
 
 <!-- Delivery Modal -->
 <div id="deliveryModal" class="modal" style="display: none;">
-<div class="modal-content">
-<span class="close" onclick="closeDeliveryModal()">&times;</span>
-<h2>Book a Delivery</h2>
-<form id="deliveryForm">
-<div class="form-group">
-<input type="text" id="senderName" placeholder="Your Name" required>
-</div>
-<div class="form-group">
-<input type="tel" id="senderPhone" placeholder="Your Phone" required>
-</div>
-<div class="form-group">
-<input type="text" id="pickupAddress" placeholder="Pickup Address" required>
-</div>
-<div class="form-group">
-<input type="text" id="deliveryAddress" placeholder="Delivery Address" required>
-</div>
-<div class="form-group">
-<select id="deliveryType" required>
-<option value="">Select Delivery Type</option>
-<option value="documents">Documents</option>
-<option value="package">Package</option>
-<option value="food">Food</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div class="form-group">
-<textarea id="specialInstructions" placeholder="Special Instructions (Optional)"></textarea>
-</div>
-<button type="submit" class="card-button">Book Delivery - ₦500</button>
-</form>
-</div>
+    <div class="modal-content">
+        <span class="close" onclick="closeDeliveryModal()">&times;</span>
+        <h2>Book a Delivery</h2>
+        <form id="deliveryForm">
+            <div class="form-group">
+                <input type="text" id="senderName" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="senderPhone" placeholder="Your Phone" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="pickupAddress" placeholder="Pickup Address" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="deliveryAddress" placeholder="Delivery Address" required>
+            </div>
+            <div class="form-group">
+                <select id="deliveryType" required>
+                    <option value="">Select Delivery Type</option>
+                    <option value="documents">Documents</option>
+                    <option value="package">Package</option>
+                    <option value="food">Food</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea id="specialInstructions" placeholder="Special Instructions (Optional)"></textarea>
+            </div>
+            <button type="submit" class="btn">Book Delivery - ₦500</button>
+        </form>
+    </div>
 </div>
 
 <!-- Track Delivery Modal -->
 <div id="trackModal" class="modal" style="display: none;">
-<div class="modal-content">
-<span class="close" onclick="closeTrackModal()">&times;</span>
-<h2>Track Your Delivery</h2>
-<div class="form-group">
-<input type="text" id="trackingId" placeholder="Enter Tracking ID">
-<button onclick="trackDelivery()" class="card-button">Track</button>
+    <div class="modal-content">
+        <span class="close" onclick="closeTrackModal()">&times;</span>
+        <h2>Track Your Delivery</h2>
+        <div class="form-group">
+            <input type="text" id="trackingId" placeholder="Enter Tracking ID">
+            <button onclick="trackDelivery()" class="btn">Track</button>
+        </div>
+        <div id="trackingResult"></div>
+    </div>
 </div>
-<div id="trackingResult"></div>
-</div>
-</div>
-</main>
 
-<!-- Footer -->
-<footer id="footer" class="footer">
-<div class="footer-top">
-<div class="container">
-<div class="row">
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer">
-<h2>About Us</h2>
-<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills.</p>
-<ul class="social">
-<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
-<li><a href="#"><i class="icofont-google-plus"></i></a></li>
-<li><a href="#"><i class="icofont-twitter"></i></a></li>
-</ul>
-</div>
-</div>
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer f-link">
-<h2>Quick Links</h2>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About Us</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="contact.html">Contact Us</a></li>
-</ul>
-</div>
-</div>
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer">
-<h2>Our Services</h2>
-<ul>
-<li><a href="programs.html">Software Development</a></li>
-<li><a href="programs.html">Data Analysis</a></li>
-<li><a href="programs.html">UI/UX Design</a></li>
-<li><a href="programs.html">Forex Trading</a></li>
-</ul>
-</div>
-</div>
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer">
-<h2>Delivery Services</h2>
-<div class="delivery-actions">
-<button onclick="showDeliveryModal()" class="card-button mb-2">Book Delivery</button>
-<button onclick="showTrackModal()" class="card-button">Track Delivery</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="copyright">
-<div class="container">
-<div class="row">
-<div class="col-lg-12 col-md-12 col-12">
-<div class="copyright-content">
-<p>© Copyright 2024 | All Rights Reserved by <a href="index.html">JE Tech Hub</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Footer Area -->
+<footer id="footer" class="footer ">
+	<!-- Footer Top -->
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-footer">
+						<h2>About Us</h2>
+						<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through comprehensive training programs and quality tech services.</p>
+						<!-- Social -->
+						<ul class="social">
+							<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
+							<li><a href="#"><i class="icofont-google-plus"></i></a></li>
+							<li><a href="#"><i class="icofont-twitter"></i></a></li>
+							<li><a href="#"><i class="icofont-pinterest"></i></a></li>
+						</ul>
+						<!-- End Social -->
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-footer f-link">
+						<h2>Quick Links</h2>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-12">
+								<ul>
+									<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+									<li><a href="about.html"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+									<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
+									<li><a href="gadgets.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Gadgets</a></li>
+									<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6 col-md-6 col-12">
+								<ul>
+									<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
+									<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Privacy Policy</a></li>
+									<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Terms & Conditions</a></li>
+									<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Support</a></li>
+									<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Careers</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-footer">
+						<h2>Our Services</h2>
+						<ul>
+							<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Web Development Training</a></li>
+							<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis Training</a></li>
+							<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design Training</a></li>
+							<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Forex Trading Training</a></li>
+							<li><a href="gadgets.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Gadget Sales & Repair</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-footer">
+						<h2>Contact Info</h2>
+						<ul class="time-sidual">
+							<li class="day">Monday - Friday <span>8:00 AM - 6:00 PM</span></li>
+							<li class="day">Saturday <span>9:00 AM - 4:00 PM</span></li>
+							<li class="day">Sunday <span>Closed</span></li>
+						</ul>
+						<div style="margin-top: 20px;">
+                            <button onclick="showDeliveryModal()" class="btn" style="margin-bottom: 10px; width: 100%;">Book Delivery</button>
+                            <button onclick="showTrackModal()" class="btn" style="width: 100%;">Track Delivery</button>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ End Footer Top -->
+	<!-- Copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-12">
+					<div class="copyright-content">
+						<p>© Copyright 2024  |  All Rights Reserved by <a href="https://www.jetechhub.com" target="_blank">JE Tech Hub</a> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ End Copyright -->
 </footer>
+<!--/ End Footer Area -->
 
+<!-- Modal CSS -->
 <style>
-/* Modal Styles */
 .modal {
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  padding: 30px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #aaa;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
 }
 
 .close:hover {
-  color: #000;
+    color: #000;
 }
 
 .form-group {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .form-group textarea {
-  height: 80px;
-  resize: vertical;
-}
-
-.delivery-actions button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
+    height: 80px;
+    resize: vertical;
 }
 
 @media (max-width: 768px) {
-  .modal-content {
-    margin: 20px;
-    padding: 20px;
-  }
+    .modal-content {
+        margin: 20px;
+        padding: 20px;
+    }
 }
 </style>
 
+<!-- jquery Min JS -->
+<script src="js/jquery.min.js"></script>
+<!-- jquery Migrate JS -->
+<script src="js/jquery-migrate-3.0.0.js"></script>
+<!-- jquery Ui JS -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Easing JS -->
+<script src="js/easing.js"></script>
+<!-- Color JS -->
+<script src="js/colors.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- Jquery Nav JS -->
+<script src="js/jquery.nav.js"></script>
+<!-- Slicknav JS -->
+<script src="js/slicknav.min.js"></script>
+<!-- ScrollUp JS -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- Niceselect JS -->
+<script src="js/niceselect.js"></script>
+<!-- Tilt Jquery JS -->
+<script src="js/tilt.jquery.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="js/owl-carousel.js"></script>
+<!-- counterup JS -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Steller JS -->
+<script src="js/steller.js"></script>
+<!-- Wow JS -->
+<script src="js/wow.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Counter Up CDN JS -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+<!-- Custom optimized JS -->
+<script src="jscript.js"></script>
+
 <script>
-// Fast loading optimization
-document.addEventListener('DOMContentLoaded', function() {
-  // Hide preloader quickly
-  setTimeout(function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      preloader.style.opacity = '0';
-      setTimeout(() => preloader.style.display = 'none', 300);
-    }
-  }, 500);
-
-  // Contact form handler
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-    
-    console.log('Contact form submitted:', data);
-    
-    // Show success message
-    const submitBtn = this.querySelector('[type="submit"]');
-    const originalText = submitBtn.value;
-    submitBtn.value = 'Message Sent!';
-    submitBtn.style.backgroundColor = '#28a745';
-    
-    setTimeout(() => {
-      this.reset();
-      submitBtn.value = originalText;
-      submitBtn.style.backgroundColor = 'darkblue';
-    }, 2000);
-  });
-
-  // Delivery form handler
-  document.getElementById('deliveryForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const deliveryData = {
-      id: 'DEL' + Date.now(),
-      senderName: document.getElementById('senderName').value,
-      senderPhone: document.getElementById('senderPhone').value,
-      pickupAddress: document.getElementById('pickupAddress').value,
-      deliveryAddress: document.getElementById('deliveryAddress').value,
-      deliveryType: document.getElementById('deliveryType').value,
-      specialInstructions: document.getElementById('specialInstructions').value,
-      status: 'Pending',
-      createdAt: new Date().toISOString(),
-      estimatedDelivery: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
-    };
-    
-    // Save to localStorage
-    let deliveries = JSON.parse(localStorage.getItem('deliveries') || '[]');
-    deliveries.push(deliveryData);
-    localStorage.setItem('deliveries', JSON.stringify(deliveries));
-    
-    alert(`Delivery booked successfully! Your tracking ID is: ${deliveryData.id}`);
-    closeDeliveryModal();
-    this.reset();
-  });
-});
-
-// Modal functions
+// Modal functions for delivery booking and tracking
 function showDeliveryModal() {
-  document.getElementById('deliveryModal').style.display = 'flex';
+    document.getElementById('deliveryModal').style.display = 'flex';
 }
 
 function closeDeliveryModal() {
-  document.getElementById('deliveryModal').style.display = 'none';
+    document.getElementById('deliveryModal').style.display = 'none';
 }
 
 function showTrackModal() {
-  document.getElementById('trackModal').style.display = 'flex';
+    document.getElementById('trackModal').style.display = 'flex';
 }
 
 function closeTrackModal() {
-  document.getElementById('trackModal').style.display = 'none';
+    document.getElementById('trackModal').style.display = 'none';
 }
 
 function trackDelivery() {
-  const trackingId = document.getElementById('trackingId').value;
-  if (!trackingId) {
-    alert('Please enter a tracking ID');
-    return;
-  }
-  
-  const deliveries = JSON.parse(localStorage.getItem('deliveries') || '[]');
-  const delivery = deliveries.find(d => d.id === trackingId);
-  
-  const resultDiv = document.getElementById('trackingResult');
-  
-  if (delivery) {
-    resultDiv.innerHTML = `
-      <div class="tracking-info">
-        <h3>Delivery Found!</h3>
-        <p><strong>Tracking ID:</strong> ${delivery.id}</p>
-        <p><strong>Status:</strong> ${delivery.status}</p>
-        <p><strong>From:</strong> ${delivery.pickupAddress}</p>
-        <p><strong>To:</strong> ${delivery.deliveryAddress}</p>
-        <p><strong>Type:</strong> ${delivery.deliveryType}</p>
-        <p><strong>Created:</strong> ${new Date(delivery.createdAt).toLocaleDateString()}</p>
-      </div>
-    `;
-  } else {
-    resultDiv.innerHTML = '<p style="color: red;">Delivery not found. Please check your tracking ID.</p>';
-  }
+    const trackingId = document.getElementById('trackingId').value;
+    if (!trackingId) {
+        alert('Please enter a tracking ID');
+        return;
+    }
+    
+    const deliveries = JSON.parse(localStorage.getItem('deliveries') || '[]');
+    const delivery = deliveries.find(d => d.id === trackingId);
+    
+    const resultDiv = document.getElementById('trackingResult');
+    
+    if (delivery) {
+        resultDiv.innerHTML = `
+            <div class="tracking-info">
+                <h3>Delivery Found!</h3>
+                <p><strong>Tracking ID:</strong> ${delivery.id}</p>
+                <p><strong>Status:</strong> ${delivery.status}</p>
+                <p><strong>From:</strong> ${delivery.pickupAddress}</p>
+                <p><strong>To:</strong> ${delivery.deliveryAddress}</p>
+                <p><strong>Type:</strong> ${delivery.deliveryType}</p>
+                <p><strong>Created:</strong> ${new Date(delivery.createdAt).toLocaleDateString()}</p>
+            </div>
+        `;
+    } else {
+        resultDiv.innerHTML = '<p style="color: red;">Delivery not found. Please check your tracking ID.</p>';
+    }
 }
 
 // Close modals when clicking outside
 window.onclick = function(event) {
-  const deliveryModal = document.getElementById('deliveryModal');
-  const trackModal = document.getElementById('trackModal');
-  
-  if (event.target === deliveryModal) {
-    closeDeliveryModal();
-  }
-  if (event.target === trackModal) {
-    closeTrackModal();
-  }
+    const deliveryModal = document.getElementById('deliveryModal');
+    const trackModal = document.getElementById('trackModal');
+    
+    if (event.target === deliveryModal) {
+        closeDeliveryModal();
+    }
+    if (event.target === trackModal) {
+        closeTrackModal();
+    }
 }
-</script>
 
-<!-- Load non-critical CSS asynchronously -->
-<script>
-const loadCSS = (href) => {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = href;
-  document.head.appendChild(link);
-};
-
-// Load non-critical styles after page load
-window.addEventListener('load', () => {
-  loadCSS('css/nice-select.css');
-  loadCSS('css/font-awesome.min.css');
-  loadCSS('css/icofont.css');
-  loadCSS('css/animate.min.css');
-  loadCSS('css/responsive.css');
+// Delivery form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const deliveryForm = document.getElementById('deliveryForm');
+    if (deliveryForm) {
+        deliveryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const deliveryData = {
+                id: 'DEL' + Date.now(),
+                senderName: document.getElementById('senderName').value,
+                senderPhone: document.getElementById('senderPhone').value,
+                pickupAddress: document.getElementById('pickupAddress').value,
+                deliveryAddress: document.getElementById('deliveryAddress').value,
+                deliveryType: document.getElementById('deliveryType').value,
+                specialInstructions: document.getElementById('specialInstructions').value,
+                status: 'Pending',
+                createdAt: new Date().toISOString(),
+                estimatedDelivery: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+            };
+            
+            let deliveries = JSON.parse(localStorage.getItem('deliveries') || '[]');
+            deliveries.push(deliveryData);
+            localStorage.setItem('deliveries', JSON.stringify(deliveries));
+            
+            alert(`Delivery booked successfully! Your tracking ID is: ${deliveryData.id}`);
+            closeDeliveryModal();
+            this.reset();
+        });
+    }
 });
 </script>
-
 </body>
 </html>
